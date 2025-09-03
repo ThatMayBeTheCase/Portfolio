@@ -1,3 +1,36 @@
+/*
+#ff705a
+#f57059
+#121e28
+#95989e
+*/
+
 body {
     background-color: #121e28;
+}
+
+.navbar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar a {
+    font-family: 'Poppins', sans-serif;
+    color: #ff705a;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header {
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin-left: 50px;
+    color: #ced0d4;
+    margin-top: 50px;
+}
+
+#highlight {
+    color: #f57059;
 }
