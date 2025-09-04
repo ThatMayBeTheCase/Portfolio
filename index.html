@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <title>My Portfolio</title>
 </head>
 <body>
@@ -16,7 +18,10 @@
             <a href="#">Contacts</a>
         </nav>
 
-        <header>
+        <header class="hero">
+            <div class="hero-image">
+                <!-- <img src="" alt=""> -->
+            </div>
             <h1>Hello <span id="highlight">.</span></h1>
             <p>
                 <span id="line">_______ </span>
@@ -31,7 +36,7 @@
         </div>
 
         <nav class="skills">
-            <a href="#">HTMLS</a>
+            <a href="#">HTML</a>
             <a href="#">CSS</a>
             <a href="#">Javascript</a>
             <a href="#">Node.js</a>
@@ -41,15 +46,45 @@
         </nav>
 
         <section id="about-me">
-            <h3>About me</h3>
-            <p>
-                I'm a passionate software developer with experience in building web applications using modern technologies. I love creating efficient and scalable solutions to solve real-world problems.
-            </p>
-            
-            
+            <div class="about-container">
+                    <div class="about-services">
+                        <div class="service">
+                            <i class="fas fa-code"></i>
+                            <span>Website Development</span>
+                        </div>
+                        <div class="service">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>App Development</span>
+                        </div>
+                        <div class="service">
+                            <i class="fas fa-server"></i>
+                            <span>Website Hosting</span>
+                        </div>
+                    </div>
+
+
+                <div class="about-text">
+                    <h3>About me</h3>
+                    <p>
+                        I'm a passionate software developer with experience in building web applications using modern technologies. I love creating efficient and scalable solutions to solve real-world problems.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                        <h4>5+</h4>
+                        <p>Completed Projects</p>
+                        </div>
+                        <div class="stat">
+                        <h4>100%</h4>
+                        <p>Learning passion</p>
+                        </div>
+                        <div class="stat">
+                        <h4>1-</h4>
+                        <p>Years of experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-    
-    </div>
-    
+    </div>  
 </body>
 </html>
