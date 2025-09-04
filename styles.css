@@ -141,13 +141,15 @@ header p {
 }
 
 .skills a:hover::before {
-  content: "<";
-  margin-right: 5px;
+    font-family: "Fira Code", monospace;
+    content: "<";
+    margin-right: 2px;
 }
 
 .skills a:hover::after {
-  content: "/>";
-  margin-left: 5px;
+    font-family: "Fira Code", monospace;
+    content: "/>";
+    margin-left: 2px;
 }
 
 
