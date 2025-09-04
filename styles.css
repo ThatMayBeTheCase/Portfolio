@@ -146,7 +146,7 @@ header p {
 }
 
 .skills a:hover::after {
-  content: ">";
+  content: "/>";
   margin-left: 5px;
 }
 
