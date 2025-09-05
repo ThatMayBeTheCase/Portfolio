@@ -48,22 +48,15 @@ body {
     transform: scale(1.1);
     transition: transform .2s ease-in-out, color .2s ease-in-out;
 }
-.navbar a:hover::before {
+/* .navbar a:hover::before {
   content: "•";
   margin-right: 5px;
 
 }
-
-.portrait {
-    display: block;
-    margin: 50px auto;
-    height: 500px;
-}
-
+ */
 header {
     font-family: 'Poppins', sans-serif;
     text-align: left;
-    margin-left: 50px;
     color: #c9d1d9;
     margin-top: 50px;
 }
@@ -71,36 +64,65 @@ header {
 header h1 {
     color: #f5f5f5;
     font-size: 3.5rem;
+    margin-left: 50px;
+    opacity:0;
+    transform:translateX(30px); /* börjar lite nedanför */
+    animation:text-in 2000ms 120ms ease-out forwards;
 }
 
 header h2 {
     font-size: 2.5rem;
+    margin-left: 50px;
+    opacity:0;
+    transform:translateX(30px); /* börjar lite nedanför */
+    animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 header p {
     font-size: 2rem;
-  text-indent: -45px;
-  padding-left: 20px;
+    text-indent: -50px;
 }
 
-#highlight {
+#dot {
     font-family: 'Poppins', sans-serif;
     color: #f57059;
 }
 
-#line {
-    display: inline-block;
-    margin-right: 10px;
-    font-family: sans-serif;
-    color: #f57059;
-    font-size: 2rem;
+.tagline{
+  display:flex;
+  align-items:baseline;
+  margin-left: -20px;
+  gap:60px;
+  font-size:2rem;
 }
+
+.tagline::before{
+  content:"";
+  width:6ch;                 /* längden på linjen */
+  height:2px;
+  background:var(--accent-color);
+  transform-origin:left;
+  transform:scaleX(0);       /* börjar hoptryckt */
+  animation:line-in 2000ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.tagline__text{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(30px); /* börjar lite nedanför */
+  animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes line-in { to { transform:scaleX(1); } }
+@keyframes text-in { to { opacity:1; transform:translateY(0); } }
 
 .buttons {
     display: flex;
     gap: 15px;
     margin-top: 50px;
     margin-left: 50px;
+    transform:translateY(30px); /* börjar lite nedanför */
+    animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .bright-btn {
@@ -254,18 +276,19 @@ header p {
         margin-bottom: -15px;
     }
 
-    header p {
-        font-size: 1.2rem;
+    .tagline {
         display: flex;
         flex-direction: column-reverse;
-        margin-top: -15px;
-        margin-bottom: -10px;
+        align-items: center;
+        margin-left: 35px;
+        gap: 5px;
     }
 
-    #line {
-        font-size: 1.2rem;
-        margin-top: -20px;
-        margin-left: 5px;
+    .tagline__text {
+        font-size: 1.5rem;
+        opacity:0;
+        transform:translatex(30px); /* börjar lite nedanför */
+        animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
     }
 
     .bright-btn, .dark-btn {
