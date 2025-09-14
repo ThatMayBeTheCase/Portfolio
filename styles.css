@@ -14,6 +14,9 @@ html { scroll-behavior: smooth; }
     --accent-color: #ff705a;
     --text-color: #c9d1d9;
     --muted-text: #8b949e;
+
+    --aside-w: clamp(320px, 36vw, 520px);
+    --hero-gap: 28px;
 }
 
 body {
@@ -23,13 +26,13 @@ body {
 
 .container {
     background-color: #121e28;
-    /* border: 2px solid #f57059; */
     border-radius: 10px;
     max-width: 1000px;
     margin: 0 auto;
     padding: 1.25rem;
 }
 
+/* NAVIGATIONBAR */
 .navbar {
     display: flex;
     justify-content: flex-end;
@@ -54,6 +57,8 @@ body {
 
 }
  */
+
+/* HERO SECTION */
 header {
     font-family: 'Poppins', sans-serif;
     text-align: left;
@@ -66,7 +71,7 @@ header h1 {
     font-size: 3.5rem;
     margin-left: 50px;
     opacity:0;
-    transform:translateX(30px); /* börjar lite nedanför */
+    transform:translateX(30px);
     animation:text-in 2000ms 120ms ease-out forwards;
 }
 
@@ -74,7 +79,7 @@ header h2 {
     font-size: 2.5rem;
     margin-left: 50px;
     opacity:0;
-    transform:translateX(30px); /* börjar lite nedanför */
+    transform:translateX(30px);
     animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
@@ -98,30 +103,41 @@ header p {
 
 .tagline::before{
   content:"";
-  width:6ch;                 /* längden på linjen */
+  width:6ch;
   height:2px;
   background:var(--accent-color);
   transform-origin:left;
-  transform:scaleX(0);       /* börjar hoptryckt */
+  transform:scaleX(0);
   animation:line-in 2000ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .tagline__text{
   display:inline-block;
   opacity:0;
-  transform:translateY(30px); /* börjar lite nedanför */
+  transform:translateY(30px);
   animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 @keyframes line-in { to { transform:scaleX(1); } }
 @keyframes text-in { to { opacity:1; transform:translateY(0); } }
 
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr var(--aside-w);
+    align-items: center;
+    gap: var(--hero-gap);
+}
+.hero-text {
+    max-width: 560px;
+}
+
+/* BUTTONS (under hero section) */
 .buttons {
     display: flex;
     gap: 15px;
     margin-top: 50px;
     margin-left: 50px;
-    transform:translateY(30px); /* börjar lite nedanför */
+    transform:translateY(30px);
     animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
@@ -155,6 +171,7 @@ header p {
     background-color: #d1604c;
 }
 
+/* SKILLS SECTION */
 .skills {
     background-color: #17232d;
     display: flex;
@@ -191,6 +208,7 @@ header p {
     margin-left: 2px;
 }
 
+/* ABOUT ME SECTION */
 #about-me {
     font-family: 'Poppins', sans-serif;
     background-color: #17232d;
@@ -256,6 +274,7 @@ header p {
 }
 
 
+
 /* Optimizations for smaller screens below */
 
 @media (max-width: 768px) {
@@ -284,19 +303,19 @@ header p {
         gap: 5px;
     }
     .tagline::before {
-        width: 5ch; /* kortare linje */
+        width: 5ch;
         height: 2px;
         margin-right: 50px;
         background: var(--accent-color);
         transform-origin: left;
-        transform: scaleX(0); /* börjar hoptryckt */
+        transform: scaleX(0);
         animation: line-in 2000ms cubic-bezier(.2,.8,.2,1) forwards;
     }
 
     .tagline__text {
         font-size: 1.5rem;
         opacity:0;
-        transform:translatex(30px); /* börjar lite nedanför */
+        transform:translatex(30px);
         animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
     }
 
