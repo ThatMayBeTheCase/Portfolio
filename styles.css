@@ -315,6 +315,7 @@ header p {
 
 @media (max-width: 768px) {
 
+    /* HERO SECTION */
     header {
         text-align: center;
         margin: 0;
@@ -354,7 +355,15 @@ header p {
         transform:translatex(30px);
         animation:text-in 2000ms 120ms cubic-bezier(.2,.8,.2,1) forwards;
     }
+    .hero-grid {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .hero-aside {
+        display: none;
+    }
 
+    /* BUTTONS SECTION */
     .bright-btn, .dark-btn {
         font-size: 0.8rem;
         padding: 8px 16px;
