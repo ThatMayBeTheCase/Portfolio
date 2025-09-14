@@ -16,7 +16,7 @@ html { scroll-behavior: smooth; }
     --muted-text: #8b949e;
 
     --aside-w: clamp(320px, 36vw, 520px);
-    --hero-gap: 28px;
+    /* --hero-gap: 28px; */
 }
 
 body {
@@ -130,6 +130,9 @@ header p {
 .hero-text {
     max-width: 560px;
 }
+/* .hero-aside {
+    display: flex;
+} */
 
 .terminal-card{
   background:#17232d;
