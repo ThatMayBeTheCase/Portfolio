@@ -15,6 +15,8 @@ html { scroll-behavior: smooth; }
     --text-color: #c9d1d9;
     --muted-text: #8b949e;
 
+    --poppins: 'Poppins', sans-serif;
+
     --aside-w: clamp(320px, 36vw, 520px);
     /* --hero-gap: 28px; */
 }
@@ -41,13 +43,13 @@ body {
 }
 
 .navbar a {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--poppins);
     color: #ced0d4;
     text-decoration: none;
     margin: 0 10px;
 }
 .navbar a:hover {
-    color: #ff705a;
+    color: var(--accent-color);
     transform: scale(1.1);
     transition: transform .2s ease-in-out, color .2s ease-in-out;
 }
@@ -60,7 +62,7 @@ body {
 
 /* HERO SECTION */
 header {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--poppins);
     text-align: left;
     color: #c9d1d9;
     margin-top: 50px;
@@ -89,8 +91,8 @@ header p {
 }
 
 #dot {
-    font-family: 'Poppins', sans-serif;
-    color: #f57059;
+    font-family: var(--poppins);
+    color: var(--accent-color);
 }
 
 .tagline{
@@ -151,7 +153,9 @@ header p {
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
 }
 .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
-.dot-red{ background:#ff5f56; } .dot-yellow{ background:#ffbd2e; } .dot-green{ background:#27c93f; }
+.dot-red{ background:var(--accent-color); }
+.dot-yellow{ background:#ffbd2e; }
+.dot-green{ background:#27c93f; }
 .term-title{
   position:absolute; left:50%; transform:translateX(-50%);
   font-size:.85rem; color:#8b949e; letter-spacing:.02em;
@@ -180,11 +184,11 @@ header p {
 }
 
 .bright-btn {
-    font-family: 'Poppins', sans-serif;
-    background-color: #d1604c;
+    font-family: var(--poppins);
+    background-color: var(--accent-color);
     color: #ced0d4;
     padding: 10px 20px;
-    border: 2px solid #d1604c;
+    border: 2px solid var(--accent-color);
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -195,18 +199,18 @@ header p {
 }
 
 .dark-btn {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--poppins);
     background-color: #121e28;
     color: #ced0d4;
     padding: 10px 20px;
-    border: 2px solid #d1604c;
+    border: 2px solid var(--accent-color);
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
 
 .dark-btn:hover {
-    background-color: #d1604c;
+    background-color: var(--accent-color);
 }
 
 /* SKILLS SECTION */
@@ -221,7 +225,7 @@ header p {
 }
 
 .skills a {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--poppins);
     font-size: 1.1rem;
     text-decoration: none;
     color: #8b949e;
@@ -229,7 +233,7 @@ header p {
 }
 
 .skills a:hover {
-    color: #ff705a;
+    color: var(--accent-color);
     transform: scale(1.1);
     transition: transform .2s ease-in-out, color .2s ease-in-out;
 }
@@ -248,7 +252,7 @@ header p {
 
 /* ABOUT ME SECTION */
 #about-me {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--poppins);
     background-color: #17232d;
     color: #c9d1d9;
     padding: 20px;
@@ -286,7 +290,7 @@ header p {
 
 .service i {
   font-size: 1.8rem;
-  color: #ff705a;
+  color: var(--accent-color);
 }
 
 .about-text h3 {
@@ -302,7 +306,7 @@ header p {
 
 .stat h4 {
   font-size: 2rem;
-  color: #ff705a;
+  color: var(--accent-color);
   margin-bottom: 5px;
 }
 
