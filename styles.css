@@ -130,9 +130,11 @@ header p {
 .hero-text {
     max-width: 560px;
 }
-/* .hero-aside {
-    display: flex;
-} */
+.hero-aside {
+    transform-origin:right;
+    transform:scaleX(0);
+    animation:line-in 1000ms cubic-bezier(.2,.8,.2,1) forwards;
+}
 
 .terminal-card{
   background:#17232d;
