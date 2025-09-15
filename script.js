@@ -1,6 +1,1 @@
-console.log("Hejsan!");
-
-const firstName = "Timmy";
-const age = 28;
-
-console.log(firstName, age);
+//skills bar ska ha funktionen att "about me" sektionen byts ut till dem olika skillsen.
