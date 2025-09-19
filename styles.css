@@ -146,6 +146,13 @@ header p {
   box-shadow:0 10px 30px rgba(0,0,0,.35);
   color: var(--text-color);
 }
+.terminal-card .term-pre a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.terminal-card .term-pre a:hover {
+  color: #ff9383;
+}
 .term-bar{
   position:relative;
   display:flex; align-items:center; gap:8px;

@@ -12,13 +12,16 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- NAV -->
         <nav class="navbar">
             <a href="#">Home</a>
             <a href="#about-me">About</a>
             <a href="#">Projects</a>
-            <a href="#">Contacts</a>
+            <a href="#contact" id="contact-link">Contacts</a>
         </nav>
 
+        <!-- HERO -->
         <header class="hero hero-grid">
             <div class="hero-text">
                 <h1>Hello <span id="dot">.</span></h1>
@@ -27,15 +30,17 @@
                 </p>
                 <h2>Software Developer</h2>
             </div>
-            <aside class="hero-aside">
-                <div class="terminal-card">
+
+    <!-- TERMINAL -->
+    <aside class="hero-aside">
+    <div class="terminal-card">
     <div class="term-bar">
       <span class="dot dot-red"></span>
       <span class="dot dot-yellow"></span>
       <span class="dot dot-green"></span>
       <span class="term-title">Terminal</span>
     </div>
-    <pre class="term-pre"><code>
+    <pre class="term-pre"><code id="term-code">
 [coffee@fedora]~$ sudo dnf install -y coffee
 Resolving dependencies...
 Installing: coffee-1.0-1.x86_64
