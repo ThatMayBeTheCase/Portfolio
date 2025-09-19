@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!termCode || !contactLink) return;
 
   // Spara originaltexten så du kan återställa terminalen
-  const defaultTerminalText = termCode.textContent.replace(/^\s+|\s+$/g, "");
+  const defaultTerminalText = termCode.textContent.trim();
 
   // Kontakt-script som körs i terminalen
   const contactLines = [
