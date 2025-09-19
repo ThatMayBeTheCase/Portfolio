@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   contactLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    typeTerminalSession(contactLines, 14, 220);
+    typeTerminalSession(contactLines, 50, 220);
   });
 });
 
