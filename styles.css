@@ -249,6 +249,10 @@ header p {
     content: "/>";
     margin-left: 2px;
 }
+#skills [data-skill].is-active {
+  color: var(--accent-color);
+  transform: scale(1.05);
+}
 
 /* ABOUT ME SECTION */
 #about-me {
@@ -293,10 +297,26 @@ header p {
   color: var(--accent-color);
 }
 
-.about-text h3 {
+#about-text h3 {
   font-size: 2rem;
   margin-bottom: 10px;
 }
+
+#about-text p {
+  position: relative;
+}
+#about-text p.type-caret::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  background: currentColor;
+  opacity: .7;
+  margin-left: 4px;
+  animation: caret-blink 1s steps(1,end) infinite;
+}
+@keyframes caret-blink { 50% { opacity: 0; } }
 
 .about-stats {
   display: flex;
