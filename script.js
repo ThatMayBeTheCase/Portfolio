@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Kontakt-script som körs i terminalen
   const contactLines = [
-    '<span class="prompt">[[coffee@fedora]]</span><span class="path">~</span>$ clear',
+    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~ </span>$ clear',
+    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~ </span>$ cd ~/contact',
+    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~/contact </span>$ nano contacts.conf',
+    '"Name": "Timmy",',
+    '"Email": <a href="mailto:timmy_wramborg97@hotmail.com">"timmy@coffee.com",</a>',
+    '"LinkedIn": <a href="https://www.linkedin.com/in/timmy-wramborg" target="_blank" rel="noopener">"linkedin.com/in/timmy",</a>',
+    '"GitHub":  <a href="https://github.com/ThatMayBeTheCase" target="_blank" rel="noopener">"github.com/timmy",</a>',
     '',
-    '### Opening contacts.txt',
-    '<span class="prompt">[[coffee@fedora]]</span><span class="path">~/contact</span>$ cat contacts.txt',
-    'Name: Timmy',
-    'Email: <a href="mailto:timmy_wramborg97@hotmail.com">timmy@coffee.com</a>',
-    'LinkedIn: <a href="https://www.linkedin.com/in/timmy-wramborg" target="_blank" rel="noopener">linkedin.com/in/timmy</a>',
-    'GitHub:  <a href="https://github.com/ThatMayBeTheCase" target="_blank" rel="noopener">github.com/timmy</a>',
-    '',
-    '<span class="prompt">[[coffee@fedora]]</span><span class="path">~/contact</span>$ _'
+    '^G Get Help   ^O Write Out   ^X Exit',
+    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~/contact </span>$ _'
   ];
 
   // animera inte om användaren valt det
@@ -44,32 +44,95 @@ document.addEventListener("DOMContentLoaded", () => {
     const rendered = [];
     termCode.innerHTML = "";
 
-    async function typeLine(htmlLine) {
-      if (htmlLine.includes("<")) {
-        rendered.push(htmlLine);
-        termCode.innerHTML = rendered.join("\n");
-        return;
-      }
+async function typeLine(htmlLine) {
+  const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
-      rendered.push("");
-      let current = "";
-      for (let i = 0; i < htmlLine.length; i++) {
-        if (token.stop) return;
+  const promptMatch = htmlLine.match(
+    /^(<span class="prompt">[\s\S]*?<\/span><span class="path">[\s\S]*?<\/span>\s*\$\s*)([\s\S]*)$/
+  );
 
-        current += htmlLine[i];
-        rendered[rendered.length - 1] = current;
-        termCode.innerHTML = rendered.join("\n");
+  if (promptMatch) {
+    const prefixHTML = promptMatch[1];
+    const restHTML   = promptMatch[2];
 
-        const ch = htmlLine[i];
-        const delay =
-          ch === " " ? charSpeed * 0.35 :
-          ".!?".includes(ch) ? charSpeed * 3 :
-          ",;:".includes(ch) ? charSpeed * 2 :
-          charSpeed;
+    const tmp = document.createElement("div");
+    tmp.innerHTML = restHTML;
+    const restPlain = tmp.textContent || "";
 
-        await new Promise((r) => setTimeout(r, delay));
-      }
+    rendered.push(prefixHTML);
+    let current = "";
+
+    for (let i = 0; i < restPlain.length; i++) {
+      if (token.stop) return;
+      current += restPlain[i];
+      rendered[rendered.length - 1] = prefixHTML + esc(current);
+      termCode.innerHTML = rendered.join("\n");
+
+      const ch = restPlain[i];
+      const delay =
+        ch === " " ? charSpeed * 0.35 :
+        ".!?".includes(ch) ? charSpeed * 3 :
+        ",;:".includes(ch) ? charSpeed * 2 :
+        charSpeed;
+
+      await new Promise(r => setTimeout(r, delay));
     }
+
+    if (restHTML.includes("<")) {
+      rendered[rendered.length - 1] = prefixHTML + restHTML;
+      termCode.innerHTML = rendered.join("\n");
+    }
+    return;
+  }
+
+  const hasHtml = htmlLine.includes("<");
+
+  if (hasHtml) {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = htmlLine;
+    const plain = tmp.textContent || "";
+
+    rendered.push("");
+    let current = "";
+    for (let i = 0; i < plain.length; i++) {
+      if (token.stop) return;
+      current += plain[i];
+      rendered[rendered.length - 1] = current;
+      termCode.innerHTML = rendered.join("\n");
+
+      const ch = plain[i];
+      const delay =
+        ch === " " ? charSpeed * 0.35 :
+        ".!?".includes(ch) ? charSpeed * 3 :
+        ",;:".includes(ch) ? charSpeed * 2 :
+        charSpeed;
+
+      await new Promise(r => setTimeout(r, delay));
+    }
+    rendered[rendered.length - 1] = htmlLine;
+    termCode.innerHTML = rendered.join("\n");
+    return;
+  }
+
+  rendered.push("");
+  let current = "";
+  for (let i = 0; i < htmlLine.length; i++) {
+    if (token.stop) return;
+    current += htmlLine[i];
+    rendered[rendered.length - 1] = current;
+    termCode.innerHTML = rendered.join("\n");
+
+    const ch = htmlLine[i];
+    const delay =
+      ch === " " ? charSpeed * 0.35 :
+      ".!?".includes(ch) ? charSpeed * 3 :
+      ",;:".includes(ch) ? charSpeed * 2 :
+      charSpeed;
+
+    await new Promise(r => setTimeout(r, delay));
+  }
+}
+
 
     for (let idx = 0; idx < lines.length; idx++) {
       if (token.stop) break;
