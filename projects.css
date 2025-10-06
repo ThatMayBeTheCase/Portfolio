@@ -39,8 +39,11 @@ body {
 .navbar {
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+    background: #121e28c0;
     padding: 10px;
-    gap: 12px;
 }
 
 .nav-links {
@@ -151,7 +154,7 @@ h2 {
     position: sticky;
     top: 0;
     z-index: 3000;
-    background: #121e28;
+    background: #121e28c0;
   }
 
   .nav-toggle {
@@ -169,7 +172,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    background: #17232d;
+    background: #121e28ee;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 10px 24px rgba(0,0,0,.3);
