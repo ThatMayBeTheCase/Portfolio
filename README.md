@@ -9,6 +9,7 @@ It includes a fake terminal with animations, an interactive skills section, and 
 - Fake terminal with typewriter effect  
 - Interactive skills section with dynamic text  
 - Responsive design for desktop and mobile  
+- Project page with links to their github as well as demos
 
 ## Tech stack
 - HTML
@@ -16,4 +17,4 @@ It includes a fake terminal with animations, an interactive skills section, and 
 - JavaScript  
 
 ---
-*This is an early stage and a demo, and will be built upon as my experience inceases.*
+*This is an early stage and a demo, and will be built upon as my experience increases.*
