@@ -3,23 +3,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const termCode = document.getElementById("term-code");
   const contactLink = document.getElementById("contact-link");
-  if (!termCode || !contactLink) return;
+    if (!termCode || !contactLink) return;
 
   // Spara originaltexten så du kan återställa terminalen
   const defaultTerminalText = termCode.textContent.trim();
 
   // Kontakt-script som körs i terminalen
   const contactLines = [
-    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~ </span>$ clear',
-    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~ </span>$ cd ~/contact',
-    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~/contact </span>$ nano contacts.conf',
+    '<span class="prompt">[coffee@case] ~ $ clear</span>',
+    '<span class="prompt">[coffee@case]</span><span class="path"> ~ </span>$ cd ~/contact',
+    '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ nano contacts.conf',
     '"Name": "Timmy",',
     '"Email": <a href="mailto:timmy_wramborg97@hotmail.com">"timmy@coffee.com",</a>',
     '"LinkedIn": <a href="https://www.linkedin.com/in/timmy-wramborg" target="_blank" rel="noopener">"linkedin.com/in/timmy",</a>',
     '"GitHub":  <a href="https://github.com/ThatMayBeTheCase" target="_blank" rel="noopener">"github.com/timmy",</a>',
     '',
-    '^G Get Help   ^O Write Out   ^X Exit',
-    '<span class="prompt">[coffee@fedora]</span><span class="path"> ~/contact </span>$ _'
+    '<span class="prompt">^G Get Help   ^O Write Out   <a id="term-exit" href="">^X Exit</a></span>',
+    '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ _'
   ];
 
   // animera inte om användaren valt det
@@ -44,94 +44,101 @@ document.addEventListener("DOMContentLoaded", () => {
     const rendered = [];
     termCode.innerHTML = "";
 
-async function typeLine(htmlLine) {
-  const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    async function typeLine(htmlLine) {
 
-  const promptMatch = htmlLine.match(
-    /^(<span class="prompt">[\s\S]*?<\/span><span class="path">[\s\S]*?<\/span>\s*\$\s*)([\s\S]*)$/
-  );
+      if (/^<span class="prompt">[\s\S]*?<\/span>$/.test(htmlLine)) {
+        rendered.push(htmlLine);
+        termCode.innerHTML = rendered.join("\n");
+        return;
+      }
 
-  if (promptMatch) {
-    const prefixHTML = promptMatch[1];
-    const restHTML   = promptMatch[2];
+      const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      
+      const promptMatch = htmlLine.match(
+        /^(<span class="prompt">[\s\S]*?<\/span><span class="path">[\s\S]*?<\/span>\s*\$\s*)([\s\S]*)$/
+      );
 
-    const tmp = document.createElement("div");
-    tmp.innerHTML = restHTML;
-    const restPlain = tmp.textContent || "";
+      if (promptMatch) {
+        const prefixHTML = promptMatch[1];
+        const restHTML   = promptMatch[2];
 
-    rendered.push(prefixHTML);
-    let current = "";
+        const tmp = document.createElement("div");
+        tmp.innerHTML = restHTML;
+        const restPlain = tmp.textContent || "";
 
-    for (let i = 0; i < restPlain.length; i++) {
-      if (token.stop) return;
-      current += restPlain[i];
-      rendered[rendered.length - 1] = prefixHTML + esc(current);
-      termCode.innerHTML = rendered.join("\n");
+        rendered.push(prefixHTML);
+        let current = "";
 
-      const ch = restPlain[i];
-      const delay =
-        ch === " " ? charSpeed * 0.35 :
-        ".!?".includes(ch) ? charSpeed * 3 :
-        ",;:".includes(ch) ? charSpeed * 2 :
-        charSpeed;
+        for (let i = 0; i < restPlain.length; i++) {
+          if (token.stop) return;
+            current += restPlain[i];
+            rendered[rendered.length - 1] = prefixHTML + esc(current);
+            termCode.innerHTML = rendered.join("\n");
 
-      await new Promise(r => setTimeout(r, delay));
+            const ch = restPlain[i];
+            const delay =
+            ch === " " ? charSpeed * 0.35 :
+            ".!?".includes(ch) ? charSpeed * 3 :
+            ",;:".includes(ch) ? charSpeed * 2 :
+            charSpeed;
+
+            await new Promise(r => setTimeout(r, delay));
+        }
+
+        if (restHTML.includes("<")) {
+          rendered[rendered.length - 1] = prefixHTML + restHTML;
+          termCode.innerHTML = rendered.join("\n");
+        }
+        return;
+      }
+
+      const hasHtml = htmlLine.includes("<");
+
+      if (hasHtml) {
+        const tmp = document.createElement("div");
+        tmp.innerHTML = htmlLine;
+        const plain = tmp.textContent || "";
+
+        rendered.push("");
+        let current = "";
+        for (let i = 0; i < plain.length; i++) {
+          if (token.stop) return;
+            current += plain[i];
+            rendered[rendered.length - 1] = current;
+            termCode.innerHTML = rendered.join("\n");
+
+            const ch = plain[i];
+            const delay =
+            ch === " " ? charSpeed * 0.35 :
+            ".!?".includes(ch) ? charSpeed * 3 :
+            ",;:".includes(ch) ? charSpeed * 2 :
+            charSpeed;
+
+            await new Promise(r => setTimeout(r, delay));
+        }
+        rendered[rendered.length - 1] = htmlLine;
+        termCode.innerHTML = rendered.join("\n");
+        return;
+      }
+
+      rendered.push("");
+      let current = "";
+      for (let i = 0; i < htmlLine.length; i++) {
+        if (token.stop) return;
+          current += htmlLine[i];
+          rendered[rendered.length - 1] = current;
+          termCode.innerHTML = rendered.join("\n");
+
+          const ch = htmlLine[i];
+          const delay =
+          ch === " " ? charSpeed * 0.35 :
+          ".!?".includes(ch) ? charSpeed * 3 :
+          ",;:".includes(ch) ? charSpeed * 2 :
+          charSpeed;
+
+          await new Promise(r => setTimeout(r, delay));
+      }
     }
-
-    if (restHTML.includes("<")) {
-      rendered[rendered.length - 1] = prefixHTML + restHTML;
-      termCode.innerHTML = rendered.join("\n");
-    }
-    return;
-  }
-
-  const hasHtml = htmlLine.includes("<");
-
-  if (hasHtml) {
-    const tmp = document.createElement("div");
-    tmp.innerHTML = htmlLine;
-    const plain = tmp.textContent || "";
-
-    rendered.push("");
-    let current = "";
-    for (let i = 0; i < plain.length; i++) {
-      if (token.stop) return;
-      current += plain[i];
-      rendered[rendered.length - 1] = current;
-      termCode.innerHTML = rendered.join("\n");
-
-      const ch = plain[i];
-      const delay =
-        ch === " " ? charSpeed * 0.35 :
-        ".!?".includes(ch) ? charSpeed * 3 :
-        ",;:".includes(ch) ? charSpeed * 2 :
-        charSpeed;
-
-      await new Promise(r => setTimeout(r, delay));
-    }
-    rendered[rendered.length - 1] = htmlLine;
-    termCode.innerHTML = rendered.join("\n");
-    return;
-  }
-
-  rendered.push("");
-  let current = "";
-  for (let i = 0; i < htmlLine.length; i++) {
-    if (token.stop) return;
-    current += htmlLine[i];
-    rendered[rendered.length - 1] = current;
-    termCode.innerHTML = rendered.join("\n");
-
-    const ch = htmlLine[i];
-    const delay =
-      ch === " " ? charSpeed * 0.35 :
-      ".!?".includes(ch) ? charSpeed * 3 :
-      ",;:".includes(ch) ? charSpeed * 2 :
-      charSpeed;
-
-    await new Promise(r => setTimeout(r, delay));
-  }
-}
 
 
     for (let idx = 0; idx < lines.length; idx++) {
@@ -153,6 +160,8 @@ async function typeLine(htmlLine) {
   });
 });
 
+/* --------------------------------------------------------------------------------------------------- */
+
 /* ABOUT ME / SKILLS SEKTIONEN */
 document.addEventListener("DOMContentLoaded", () => {
   // en ordbok (objekt)
@@ -161,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
     css: "I can create clean layouts and animations with modern CSS.",
     javascript: "I use JavaScript to make my projects interactive.",
     nodejs: "I haven't started using Node.js yet, but I'm looking forward to learning it!",
-    react: "I haven't started using React yet, but I'm excited to learn it!",
+    java: "I haven't started using java yet, but I'm excited to learn it!",
+    springboot: "I have yet to learn Spring Boot, but it's something I'm excited for.",
     git: "I use Git for version control and clear commits. I haven't worked much with branches yet, since main works fine for personal projects.",
     github: "GitHub is where I host my portfolio and other projects."
   };
