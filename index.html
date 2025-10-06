@@ -15,10 +15,19 @@
 
         <!-- NAV -->
         <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#about-me">About</a>
-            <a href="#">Projects</a>
-            <a href="#contact" id="contact-link">Contacts</a>
+            <span id="myName">Timmy Wramborg</span>
+
+            <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+                <span class="sr-only">Meny</span>
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <div id="primary-nav" class="nav-links" data-open="false">
+                <a href="index.html">Home</a>
+                <a href="#about-me">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="index.html" id="contact-link">Contacts</a>
+            </div>
         </nav>
 
         <!-- HERO -->
@@ -93,12 +102,12 @@ Coffee 1.0.0 ☕
                     </p>
                     <div class="about-stats">
                         <div class="stat">
-                            <h4>1+</h4>
+                            <h4>2+</h4>
                             <p>Completed Projects</p>
                         </div>
                         <div class="stat">
-                            <h4>97%</h4>
-                            <p>Learning passion</p>
+                            <h4>100%</h4>
+                            <p>Growth mindset</p>
                         </div>
                         <div class="stat">
                             <h4><1</h4>

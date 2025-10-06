@@ -1,0 +1,204 @@
+
+html { scroll-behavior: smooth; }
+@keyframes line-in { to { transform:scaleX(1); } }
+@keyframes text-in { to { opacity:1; transform:translateY(0); } }
+
+:root {
+    --bg-color: #121e28;
+    --accent-color: #ff705a;
+    --text-color: #c9d1d9;
+    --muted-text: #8b949e;
+
+    --poppins: 'Poppins', sans-serif;
+
+    --aside-w: clamp(320px, 36vw, 520px);
+    /* --hero-gap: 28px; */
+}
+
+body {
+    background-image: radial-gradient(#273d50, #0d161d);
+    background-color: #0d161d;
+}
+
+.container {
+    background-color: #121e28;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+/* NAVIGATIONBAR */
+#myName {
+    font-family: var(--poppins);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-right: auto;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 12px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* knappen döljs på desktop */
+.nav-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.navbar a {
+    font-family: var(--poppins);
+    color: #ced0d4;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 8px;
+}
+.navbar a:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+    transition: transform .2s ease-in-out, color .2s ease-in-out;
+}
+
+/* HERO SECTION */
+header {
+    font-family: var(--poppins);
+    text-align: left;
+    color: #c9d1d9;
+}
+
+header h1 {
+    color: #f5f5f5;
+    font-size: 3rem;
+    margin-left: 50px;
+    opacity:0;
+    transform:translateX(30px);
+    animation:text-in 2000ms 120ms ease-out forwards;
+}
+#dot {
+    font-family: var(--poppins);
+    color: var(--accent-color);
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+}
+.project p {
+    color: var(--muted-text);
+}
+.project {
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+    min-width: 0;
+    font-family: var(--poppins);
+    background-color: #17232d;
+    color: #c9d1d9;
+    padding: 16px;
+    border-radius: 10px;
+    opacity:0;
+    transform:translateY(30px);
+    animation:text-in 2000ms 120ms ease-out forwards;
+}
+.project img {
+    display: flex;
+    align-self: center;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.project-links a {
+    font-family: var(--poppins);
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+}
+.project-links a:hover {
+    color: #ff9383;
+    transform: scale(1.1);
+    transition: transform .2s ease-in-out, color .2s ease-in-out;
+}
+
+
+/* MEDIA QUERIES för mobil */
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+    background: #121e28;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #17232d;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.3);
+    z-index: 2000; 
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+    max-height .3s ease,
+    opacity .2s ease,
+    transform .25s ease;
+  }
+
+  /* När menyn är öppen */
+  .nav-links[data-open="true"] {
+    max-height: 320px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+  .nav-links a:hover {
+    transform: none;
+    background: rgba(255,255,255,.04);
+    color: #ff9383;
+  }
+}

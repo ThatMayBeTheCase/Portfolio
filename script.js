@@ -1,5 +1,5 @@
-// TERMINAL FÖR CONTACT INFO
 
+// TERMINAL FÖR CONTACT INFO
 document.addEventListener("DOMContentLoaded", () => {
   const termCode = document.getElementById("term-code");
   const contactLink = document.getElementById("contact-link");
@@ -273,6 +273,50 @@ document.addEventListener("DOMContentLoaded", () => {
         el.classList.remove("is-active");
         if (el.getAttribute("role") === "tab") el.setAttribute("aria-selected", "false");
       });
+    }
+  });
+});
+
+/* ------------------------------------------------------------------------------- */
+
+//  Media query hamburgarmeny
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (!toggleBtn || !nav) return;
+
+  const icon = toggleBtn.querySelector('i');
+
+  function setOpen(isOpen) {
+    nav.setAttribute('data-open', isOpen ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    if (icon) {
+      icon.classList.toggle('fa-bars', !isOpen);
+      icon.classList.toggle('fa-xmark', isOpen);
+    }
+  }
+
+  // startar stängd
+  setOpen(false);
+
+  toggleBtn.addEventListener('click', () => {
+    const open = nav.getAttribute('data-open') === 'true';
+    setOpen(!open);
+  });
+
+  // Stäng om man klickar utanför
+  document.addEventListener('click', (e) => {
+    const isClickInside = nav.contains(e.target) || toggleBtn.contains(e.target);
+    if (!isClickInside && nav.getAttribute('data-open') === 'true') {
+      setOpen(false);
+    }
+  });
+
+  // Stäng med Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.getAttribute('data-open') === 'true') {
+      setOpen(false);
+      toggleBtn.focus();
     }
   });
 });
