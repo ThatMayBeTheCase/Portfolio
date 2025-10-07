@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Spara originaltexten så du kan återställa terminalen
   const defaultTerminalText = termCode.textContent.trim();
 
-  // Kontakt-script som körs i terminalen
+  // Array av strängar som skrivs ut i terminalen
   const contactLines = [
     '<span class="prompt">[coffee@case] ~ $ clear</span>',
     '<span class="prompt">[coffee@case]</span><span class="path"> ~ </span>$ cd ~/contact',
@@ -22,12 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ _'
   ];
 
-  // animera inte om användaren valt det
+  // Fråga browser om användaren har reducerade animationer
   const prefersNoMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
   // Abort-token så vi kan stoppa en pågående skrivning
   let termAbort = { stop: false };
 
+  // Async funktion som skriver ut texten
   async function typeTerminalSession(lines, charSpeed = 14, linePause = 220) {
     termAbort.stop = true;
     await Promise.resolve();
@@ -262,18 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // kör skrivmaskins animation på den nya texten
     typeText(aboutTextP, nextText, 18);
-  });
-
-  // Lyssnar på clicks utanfor skills baren, nollställer "about me" sektion
-  document.addEventListener("click", (e) => {
-    if (!skills.contains(e.target)) {
-      aboutTitle.textContent = defaultTitle;
-      typeText(aboutTextP, defaultParagraph, 18);
-      document.querySelectorAll("#skills [data-skill]").forEach((el) => {
-        el.classList.remove("is-active");
-        if (el.getAttribute("role") === "tab") el.setAttribute("aria-selected", "false");
-      });
-    }
   });
 });
 
