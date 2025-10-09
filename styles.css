@@ -367,6 +367,8 @@ header p {
     font-size: 2rem;
     color: var(--accent-color);
     margin-bottom: 5px;
+    justify-content: center;
+    display: flex;
 }
 
 .stat p {
