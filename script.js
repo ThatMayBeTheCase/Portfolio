@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let termAbort = { stop: false };
 
   // Async funktion som skriver ut texten
-  async function typeTerminalSession(lines, charSpeed = 14, linePause = 220) {
+  async function runTerminalTyping(lines, charSpeed = 14, linePause = 220) {
     termAbort.stop = true;
     await Promise.resolve();
 
@@ -42,18 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const rendered = [];
+    const renderedLines = [];
     termCode.innerHTML = "";
 
     async function typeLine(htmlLine) {
 
       if (/^<span class="prompt">[\s\S]*?<\/span>$/.test(htmlLine)) {
-        rendered.push(htmlLine);
-        termCode.innerHTML = rendered.join("\n");
+        renderedLines.push(htmlLine);
+        termCode.innerHTML = renderedLines.join("\n");
         return;
       }
 
-      const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      const escapeHTML = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
       
       const promptMatch = htmlLine.match(
         /^(<span class="prompt">[\s\S]*?<\/span><span class="path">[\s\S]*?<\/span>\s*\$\s*)([\s\S]*)$/
@@ -67,28 +67,28 @@ document.addEventListener("DOMContentLoaded", () => {
         tmp.innerHTML = restHTML;
         const restPlain = tmp.textContent || "";
 
-        rendered.push(prefixHTML);
-        let current = "";
+        renderedLines.push(prefixHTML);
+        let typedSoFar = "";
 
         for (let i = 0; i < restPlain.length; i++) {
           if (token.stop) return;
-            current += restPlain[i];
-            rendered[rendered.length - 1] = prefixHTML + esc(current);
-            termCode.innerHTML = rendered.join("\n");
+            typedSoFar += restPlain[i];
+            renderedLines[renderedLines.length - 1] = prefixHTML + escapeHTML(typedSoFar);
+            termCode.innerHTML = renderedLines.join("\n");
 
-            const ch = restPlain[i];
-            const delay =
-            ch === " " ? charSpeed * 0.35 :
-            ".!?".includes(ch) ? charSpeed * 3 :
-            ",;:".includes(ch) ? charSpeed * 2 :
+            const char = restPlain[i];
+            const charDelayMs =
+            char === " " ? charSpeed * 0.35 :
+            ".!?".includes(char) ? charSpeed * 3 :
+            ",;:".includes(char) ? charSpeed * 2 :
             charSpeed;
 
-            await new Promise(r => setTimeout(r, delay));
+            await new Promise(r => setTimeout(r, charDelayMs));
         }
 
         if (restHTML.includes("<")) {
-          rendered[rendered.length - 1] = prefixHTML + restHTML;
-          termCode.innerHTML = rendered.join("\n");
+          renderedLines[renderedLines.length - 1] = prefixHTML + restHTML;
+          termCode.innerHTML = renderedLines.join("\n");
         }
         return;
       }
@@ -98,57 +98,57 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hasHtml) {
         const tmp = document.createElement("div");
         tmp.innerHTML = htmlLine;
-        const plain = tmp.textContent || "";
+        const plainText = tmp.textContent || "";
 
-        rendered.push("");
-        let current = "";
-        for (let i = 0; i < plain.length; i++) {
+        renderedLines.push("");
+        let typedSoFar = "";
+        for (let i = 0; i < plainText.length; i++) {
           if (token.stop) return;
-            current += plain[i];
-            rendered[rendered.length - 1] = current;
-            termCode.innerHTML = rendered.join("\n");
+            typedSoFar += plainText[i];
+            renderedLines[renderedLines.length - 1] = typedSoFar;
+            termCode.innerHTML = renderedLines.join("\n");
 
-            const ch = plain[i];
-            const delay =
-            ch === " " ? charSpeed * 0.35 :
-            ".!?".includes(ch) ? charSpeed * 3 :
-            ",;:".includes(ch) ? charSpeed * 2 :
+            const char = plainText[i];
+            const charDelayMs =
+            char === " " ? charSpeed * 0.35 :
+            ".!?".includes(char) ? charSpeed * 3 :
+            ",;:".includes(char) ? charSpeed * 2 :
             charSpeed;
 
-            await new Promise(r => setTimeout(r, delay));
+            await new Promise(r => setTimeout(r, charDelayMs));
         }
-        rendered[rendered.length - 1] = htmlLine;
-        termCode.innerHTML = rendered.join("\n");
+        renderedLines[renderedLines.length - 1] = htmlLine;
+        termCode.innerHTML = renderedLines.join("\n");
         return;
       }
 
-      rendered.push("");
-      let current = "";
+      renderedLines.push("");
+      let typedSoFar = "";
       for (let i = 0; i < htmlLine.length; i++) {
         if (token.stop) return;
-          current += htmlLine[i];
-          rendered[rendered.length - 1] = current;
-          termCode.innerHTML = rendered.join("\n");
+          typedSoFar += htmlLine[i];
+          renderedLines[renderedLines.length - 1] = typedSoFar;
+          termCode.innerHTML = renderedLines.join("\n");
 
-          const ch = htmlLine[i];
-          const delay =
-          ch === " " ? charSpeed * 0.35 :
-          ".!?".includes(ch) ? charSpeed * 3 :
-          ",;:".includes(ch) ? charSpeed * 2 :
+          const char = htmlLine[i];
+          const charDelayMs =
+          char === " " ? charSpeed * 0.35 :
+          ".!?".includes(char) ? charSpeed * 3 :
+          ",;:".includes(char) ? charSpeed * 2 :
           charSpeed;
 
-          await new Promise(r => setTimeout(r, delay));
+          await new Promise(r => setTimeout(r, charDelayMs));
       }
     }
 
 
-    for (let idx = 0; idx < lines.length; idx++) {
+    for (let charIndex = 0; charIndex < lines.length; charIndex++) {
       if (token.stop) break;
-      await typeLine(lines[idx]);
+      await typeLine(lines[charIndex]);
       if (token.stop) break;
 
       // Radpaus (lite kortare efter tomrad)
-      const pause = lines[idx].trim() === "" ? linePause * 0.4 : linePause;
+      const pause = lines[charIndex].trim() === "" ? linePause * 0.4 : linePause;
       await new Promise((r) => setTimeout(r, pause));
     }
   }
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
   contactLink.addEventListener("click", (e) => {
     e.preventDefault();
 
-    typeTerminalSession(contactLines, 50, 220);
+    runTerminalTyping(contactLines, 50, 220);
   });
 });
 
@@ -181,8 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const skills = document.getElementById("skills");
   const aboutTextP = document.querySelector("#about-text p");
   const aboutTitle = document.querySelector("#about-text h3");
-
-  // avbryter om något element saknas (failsafe)
   if (!skills || !aboutTextP || !aboutTitle) return;
 
   // sparar original rubrik och text så den kan återställas
@@ -221,15 +219,15 @@ document.addEventListener("DOMContentLoaded", () => {
       el.textContent += fullText[i];
 
       // fördröjer utskrift av speciella tecken för mer realistisk effekt
-      const ch = fullText[i];
-      const delay =
-        ch === " " ? speed * 0.4 :
-        ".!?".includes(ch) ? speed * 3 :
-        ",;:".includes(ch) ? speed * 2 :
+      const char = fullText[i];
+      const charDelayMs =
+        char === " " ? speed * 0.4 :
+        ".!?".includes(char) ? speed * 3 :
+        ",;:".includes(char) ? speed * 2 :
         speed;
 
-      // delay mellan nästa tecken
-      await new Promise((r) => setTimeout(r, delay));
+      // charDelayMs mellan nästa tecken
+      await new Promise((r) => setTimeout(r, charDelayMs));
     }
 
     // när loopen är klar, tar bort blinkande karet
@@ -298,14 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isClickInside = nav.contains(e.target) || toggleBtn.contains(e.target);
     if (!isClickInside && nav.getAttribute('data-open') === 'true') {
       setOpen(false);
-    }
-  });
-
-  // Stäng med Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.getAttribute('data-open') === 'true') {
-      setOpen(false);
-      toggleBtn.focus();
     }
   });
 });

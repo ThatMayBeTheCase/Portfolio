@@ -26,6 +26,7 @@ body {
     margin: 0 auto;
     padding: 1.25rem;
 }
+/* ---------------------------------------------------------------------------- */
 
 /* NAVIGATIONBAR */
 #myName {
@@ -79,6 +80,8 @@ body {
     transform: scale(1.05);
     transition: transform .2s ease-in-out, color .2s ease-in-out;
 }
+/* ---------------------------------------------------------------------------- */
+
 
 /* HERO SECTION */
 header {
@@ -202,6 +205,8 @@ header p {
     animation: blink 1s steps(1,end) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+/* ---------------------------------------------------------------------------- */
+
 
 /* BUTTONS (under hero section) */
 .buttons {
@@ -242,6 +247,8 @@ header p {
 .dark-btn:hover {
     background-color: var(--accent-color);
 }
+/* ---------------------------------------------------------------------------- */
+
 
 /* SKILLS SECTION */
 .skills {
@@ -283,6 +290,8 @@ header p {
   color: var(--accent-color);
   transform: scale(1.05);
 }
+/* ---------------------------------------------------------------------------- */
+
 
 /* ABOUT ME SECTION */
 #about-me {
@@ -364,7 +373,7 @@ header p {
     font-size: 1rem;
     color: #8b949e;
 }
-
+/* ---------------------------------------------------------------------------- */
 
 
 /* Optimizations for smaller screens below */
