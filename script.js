@@ -1,14 +1,14 @@
 
-// TERMINAL FÖR CONTACT INFO
+// TERMINAL FOR CONTACT INFO
 document.addEventListener("DOMContentLoaded", () => {
   const termCode = document.getElementById("term-code");
   const contactLink = document.getElementById("contact-link");
     if (!termCode || !contactLink) return;
 
-  // Spara originaltexten så du kan återställa terminalen
+  // SAVE ORIGINAL TEXT
   const defaultTerminalText = termCode.textContent.trim();
 
-  // Array av strängar som skrivs ut i terminalen
+  // Array of strings for terminal
   const contactLines = [
     '<span class="prompt">[coffee@case] ~ $ clear</span>',
     '<span class="prompt">[coffee@case]</span><span class="path"> ~ </span>$ cd ~/contact',
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ _'
   ];
 
-  // Fråga browser om användaren har reducerade animationer
+  // Reduced animations if requested by user
   const prefersNoMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
-  // Abort-token så vi kan stoppa en pågående skrivning
+  // Abort-token
   let termAbort = { stop: false };
 
-  // Async funktion som skriver ut texten
+  // Async funktion that runs terminal typing
   async function runTerminalTyping(lines, charSpeed = 14, linePause = 220) {
     termAbort.stop = true;
     await Promise.resolve();
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     termAbort = { stop: false };
     const token = termAbort;
 
-    // Ingen animation, då Skrivs ut allt direkt
+    // If no animation is requested, just show the text
     if (prefersNoMotion) {
       termCode.innerHTML = lines.join("\n");
       return;
@@ -147,13 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
       await typeLine(lines[charIndex]);
       if (token.stop) break;
 
-      // Radpaus (lite kortare efter tomrad)
       const pause = lines[charIndex].trim() === "" ? linePause * 0.4 : linePause;
       await new Promise((r) => setTimeout(r, pause));
     }
   }
 
-  // Trigga terminal när man klickar på Contacts
+  // Start terminal when clicking "contacts"
   contactLink.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -165,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ABOUT ME / SKILLS SEKTIONEN */
 document.addEventListener("DOMContentLoaded", () => {
-  // en ordbok (objekt)
+  // text for each skill, attached to keys (objects)
   const skillContent = {
     html: "I am good at building structured and semantic HTML.",
     css: "I can create clean layouts and animations with modern CSS.",
@@ -177,48 +176,47 @@ document.addEventListener("DOMContentLoaded", () => {
     github: "GitHub is where I host my portfolio and other projects."
   };
 
-  // Hämtar referenser
+  // fetching referenses
   const skills = document.getElementById("skills");
   const aboutTextP = document.querySelector("#about-text p");
   const aboutTitle = document.querySelector("#about-text h3");
   if (!skills || !aboutTextP || !aboutTitle) return;
 
-  // sparar original rubrik och text så den kan återställas
+  // saves default text
   const defaultTitle = aboutTitle.textContent;
   const defaultParagraph = aboutTextP.textContent;
 
-  // avbryter pågående animation vid aktivering av något annat
   let typingAbort = { stop: false };
 
-  // om användaren har reducerade animationer på stängs den av
+  // reduced animations
   const prefersNoMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  // skriver ut texten tecken för tecken
+  // function for typing text char by char
   async function typeText(el, fullText, speed = 18) {
     typingAbort.stop = true;
     await new Promise((r) => setTimeout(r, 0));
 
-    // skapar en ny abort token
+    // create new token
     typingAbort = { stop: false };
     const token = typingAbort;
 
-    // om användaren inte vill ha animationer skrivs hela texten ut direkt
+    // reduced animations, write all text and remove caret.
     if (prefersNoMotion) {
       el.textContent = fullText;
       el.classList.remove("type-caret");
       return;
     }
 
-    // Blinkande karet
+    // blinking caret
     el.textContent = "";
     el.classList.add("type-caret");
 
-    // loopar över alla tecken i texten, bryt vid token ändring
+    // Loops through each character, cancel at token change
     for (let i = 0; i < fullText.length; i++) {
       if (token.stop) break;
       el.textContent += fullText[i];
 
-      // fördröjer utskrift av speciella tecken för mer realistisk effekt
+      // delay some characters for realism
       const char = fullText[i];
       const charDelayMs =
         char === " " ? speed * 0.4 :
@@ -226,32 +224,31 @@ document.addEventListener("DOMContentLoaded", () => {
         ",;:".includes(char) ? speed * 2 :
         speed;
 
-      // charDelayMs mellan nästa tecken
       await new Promise((r) => setTimeout(r, charDelayMs));
     }
 
-    // när loopen är klar, tar bort blinkande karet
+    // remove caret after loop
     el.classList.remove("type-caret");
     if (token.stop) el.textContent = fullText;
   }
 
-  // Lyssnar på clicks i skills baren
+  // listens to clicks on skill-bar
   skills.addEventListener("click", (e) => {
     const target = e.target.closest("[data-skill]");
     if (!target) return;
     if (target.tagName.toLowerCase() === "a") e.preventDefault();
 
-    // plocka ut värdet från data-skill
+    // retrieve skill key
     const key = (target.dataset.skill || "");
 
-    // skriv ut den nya texten, om den finns
+    // write out new text, if not return
     const nextText = skillContent[key];
     if (!nextText) return;
 
-    // ändra rubrik till vald skill kategori
+    // change title to key
     aboutTitle.textContent = target.textContent.trim();
 
-    // visuell markering av vald skill
+    // visual marking of active skill
     document.querySelectorAll("#skills [data-skill]").forEach((el) => {
       el.classList.remove("is-active");
       if (el.getAttribute("role") === "tab") el.setAttribute("aria-selected", "false");
@@ -259,14 +256,14 @@ document.addEventListener("DOMContentLoaded", () => {
     target.classList.add("is-active");
     if (target.getAttribute("role") === "tab") target.setAttribute("aria-selected", "true");
 
-    // kör skrivmaskins animation på den nya texten
+    // typewriter animation on new text
     typeText(aboutTextP, nextText, 18);
   });
 });
 
 /* ------------------------------------------------------------------------------- */
 
-//  Media query hamburgarmeny
+//  Media query hamburgermenu
 document.addEventListener('DOMContentLoaded', () => { 
   const toggleBtn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
@@ -283,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // startar stängd
+  // starts closed
   setOpen(false);
 
   toggleBtn.addEventListener('click', () => {
@@ -291,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setOpen(!open);
   });
 
-  // Stäng om man klickar utanför
+  // close on outside click
   document.addEventListener('click', (e) => {
     const isClickInside = nav.contains(e.target) || toggleBtn.contains(e.target);
     if (!isClickInside && nav.getAttribute('data-open') === 'true') {

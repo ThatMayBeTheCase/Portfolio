@@ -1,3 +1,4 @@
+/* Styling for projects.html */
 
 html { scroll-behavior: smooth; }
 @keyframes line-in { to { transform:scaleX(1); } }
@@ -12,7 +13,6 @@ html { scroll-behavior: smooth; }
     --poppins: 'Poppins', sans-serif;
 
     --aside-w: clamp(320px, 36vw, 520px);
-    /* --hero-gap: 28px; */
 }
 
 body {
@@ -52,7 +52,6 @@ body {
     gap: 10px;
 }
 
-/* knappen döljs på desktop */
 .nav-toggle {
     display: none;
     border: none;
@@ -147,7 +146,7 @@ h2 {
 }
 
 
-/* MEDIA QUERIES för mobil */
+/* MEDIA QUERIES for RESPONSIVENESS */
 @media (max-width: 768px) {
   .navbar {
     position: relative;
@@ -188,7 +187,7 @@ h2 {
     transform .25s ease;
   }
 
-  /* När menyn är öppen */
+  /* when menu is open */
   .nav-links[data-open="true"] {
     max-height: 320px;
     opacity: 1;
