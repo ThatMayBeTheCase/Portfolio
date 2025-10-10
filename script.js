@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ------------------------------------------------------------------------------- */
 
 //  Media query hamburgarmeny
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
   const toggleBtn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (!toggleBtn || !nav) return;
