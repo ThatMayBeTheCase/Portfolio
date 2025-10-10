@@ -77,13 +77,8 @@ It includes a fake terminal with animations, an interactive skills section, a pr
   **Fix:** Escape during typing, then swap to the original HTML when the line finishes so links work properly.
 
 - **Prompt animated (everything typed, too noisy)**  
-  **Issue:** The entire line (prompt + path + `$` + command/output) was typed character-by-character, which looked jittery and sometimes rendered partial HTML mid-typing.  
-  **Fix:** Added a `promptMatch` regex to split each line into `prefixHTML` (prompt, path, `$ `) and `restHTML` (the command/output). Render `prefixHTML` immediately, type `restHTML` as escaped text via `escapeHTML`, then swap in the original HTML when the line finishes so links are clickable.
-
-
-- **Accessibility**  
-  **Issue:** Animations can be uncomfortable for some users.  
-  **Fix:** Respect `prefers-reduced-motion` and skip animations if ruquested by user.
+  **Issue:** The entire line was typed character-by-character, which looked fake and not like a real terminal, and sometimes rendered partial HTML mid-typing.  
+  **Fix:** Added a `promptMatch` regex to split each line into `prefixHTML` and `restHTML` (the command/output). Render `prefixHTML` immediately, type `restHTML` as escaped text via `escapeHTML`, then swap in the original HTML when the line finishes so links are clickable.
 
 ---
 *This is an early stage and a demo, and will be built upon as my experience increases.*
