@@ -8,18 +8,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // SAVE ORIGINAL TEXT
   const defaultTerminalText = termCode.textContent.trim();
 
-  // Array of strings for terminal
+  // CONTACT INFO
+  const contact = {
+    name: "Timmy",
+    email: "timmy_wramborg97@hotmail.com",
+    linkedin: "https://www.linkedin.com/in/timmy-wramborg",
+    github: "https://github.com/ThatMayBeTheCase",
+  };
+  // TERMINAL TEXT (array of strings)
   const contactLines = [
-    '<span class="prompt">[coffee@case] ~ $ clear</span>',
-    '<span class="prompt">[coffee@case]</span><span class="path"> ~ </span>$ cd ~/contact',
-    '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ nano contacts.conf',
-    '"Name": "Timmy",',
-    '"Email": <a href="mailto:timmy_wramborg97@hotmail.com">"timmy@coffee.com",</a>',
-    '"LinkedIn": <a href="https://www.linkedin.com/in/timmy-wramborg" target="_blank" rel="noopener">"linkedin.com/in/timmy",</a>',
-    '"GitHub":  <a href="https://github.com/ThatMayBeTheCase" target="_blank" rel="noopener">"github.com/timmy",</a>',
-    '',
-    '<span class="prompt">^G Get Help   ^O Write Out   <a id="term-exit" href="">^X Exit</a></span>',
-    '<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ _'
+    `<span class="prompt">[coffee@case] ~ $ clear</span>`,
+    `<span class="prompt">[coffee@case]</span><span class="path"> ~ </span>$ cd ~/contact`,
+    `<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ nano contacts.conf`,
+    `"Name": "Timmy",`,
+    `"Email": <a href="mailto:${contact.email}">"timmy@coffee.com",</a>`,
+    `"LinkedIn": <a href="${contact.linkedin}" target="_blank" rel="noopener">"linkedin.com/in/timmy",</a>`,
+    `"GitHub":  <a href="${contact.github}" target="_blank" rel="noopener">"github.com/timmy",</a>`,
+    ``,
+    `<span class="prompt">^G Get Help   ^O Write Out   <a id="term-exit" href="">^X Exit</a></span>`,
+    `<span class="prompt">[coffee@case]</span><span class="path"> ~/contact </span>$ _`
   ];
 
   // Reduced animations if requested by user
@@ -239,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (target.tagName.toLowerCase() === "a") e.preventDefault();
 
     // retrieve skill key
-    const key = (target.dataset.skill || "");
+    const { skill: key = "" } = target.dataset;
 
     // write out new text, if not return
     const nextText = skillContent[key];
