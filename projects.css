@@ -108,6 +108,7 @@ header h1 {
 h2 {
     font-size: 2rem;
     color: var(--text-color);
+    margin: 0;
 }
 .project p {
     color: var(--muted-text);

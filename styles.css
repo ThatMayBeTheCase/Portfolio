@@ -148,7 +148,6 @@ header p {
     display: grid;
     grid-template-columns: 1fr var(--aside-w);
     align-items: center;
-    gap: var(--hero-gap);
 }
 .hero-text {
     max-width: 560px;
@@ -263,7 +262,6 @@ header p {
     font-family: var(--poppins);
     font-size: 1.1rem;
     text-decoration: none;
-    color: #8b949e;
     color: #3d4047;
 }
 

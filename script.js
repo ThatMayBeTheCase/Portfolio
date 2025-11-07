@@ -7,7 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // SAVE ORIGINAL TEXT
   const defaultTerminalText = termCode.textContent.trim();
-
+  // EXIT to default terminal text
+  const exitLink = document.getElementById("term-exit");
+  if (exitLink) {
+    exitLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      termAbort.stop = true;
+      termCode.textContent = defaultTerminalText;
+    })
+  }
   // CONTACT INFO
   const contact = {
     name: "Timmy",
@@ -196,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let typingAbort = { stop: false };
 
   // reduced animations
-  const prefersNoMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const prefersNoMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
   // function for typing text char by char
   async function typeText(el, fullText, speed = 18) {
