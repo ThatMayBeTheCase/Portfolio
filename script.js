@@ -7,15 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // SAVE ORIGINAL TEXT
   const defaultTerminalText = termCode.textContent.trim();
-  // EXIT to default terminal text
-  const exitLink = document.getElementById("term-exit");
-  if (exitLink) {
-    exitLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      termAbort.stop = true;
-      termCode.textContent = defaultTerminalText;
-    })
-  }
+
   // CONTACT INFO
   const contact = {
     name: "Timmy",
@@ -42,6 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Abort-token
   let termAbort = { stop: false };
+
+  termCode.addEventListener("click", (e) => {
+    if (e.target.id !== "term-exit") return;
+      e.preventDefault();
+      termAbort.stop = true;
+      termCode.textContent = defaultTerminalText;
+  })
 
   // Async funktion that runs terminal typing
   async function runTerminalTyping(lines, charSpeed = 14, linePause = 220) {
