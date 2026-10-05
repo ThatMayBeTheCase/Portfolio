@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/theme.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/theme.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 
     <title>My Portfolio</title>
 </head>
 <body>
     <div class="container">
 
-        <!-- NAV -->
         <nav class="navbar">
             <span id="myName">Timmy Wramborg</span>
 
@@ -22,32 +23,80 @@
                 <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
             </button>
 
-            <div id="primary-nav" class="nav-links" data-open="false">
+            <fieldset class="nav-frame">
+                <legend class="nav-legend">
+            <span id="primary-nav" class="nav-links" data-open="false">
                 <a href="index.html">Home</a>
                 <a href="#about-me">About</a>
                 <a href="projects.html">Projects</a>
-                <a href="index.html" id="contact-link">Contacts</a>
-            </div>
+                <a href="#contact-terminal" id="contact-link">Contacts</a>
+            </span>
+                </legend>
+            </fieldset>
         </nav>
 
-        <!-- HERO -->
-        <header class="hero hero-grid">
+        <header class="hero">
             <div class="hero-text">
-                <h1>Hello <span id="dot">.</span></h1>
+                <h1>Hello<span id="dot">.</span></h1>
                 <p class="tagline">
                     <span class="tagline__text">I'm Timmy</span>
                 </p>
                 <h2>Software Developer</h2>
             </div>
 
-            <!-- TERMINAL -->
-            <aside class="hero-aside">
-                <div class="terminal-card">
+        </header>
+
+        <div class="buttons">
+            <a class="bright-btn" href="mailto:timmy_wramborg97@hotmail.com">Email me</a>
+            <a class="dark-btn" href="cv.html">My resume</a>
+        </div>
+        <fieldset class="skills-panel">
+            <legend id="skills-title" class="panel-label">Skills</legend>
+            <nav class="skills" id="skills" aria-labelledby="skills-title">
+            <a href="#" data-skill="html">HTML</a>
+            <a href="#" data-skill="css">CSS</a>
+            <a href="#" data-skill="javascript">Javascript</a>
+            <a href="#" data-skill="nodejs">Node.js</a>
+            <a href="#" data-skill="java">Java</a>
+            <a href="#" data-skill="springboot">Spring Boot</a>
+            <a href="#" data-skill="git">Git</a>
+            <a href="#" data-skill="github">GitHub</a>
+            <a href="#" data-skill="cicd">CI/CD</a>
+            </nav>
+        </fieldset>
+        <fieldset id="about-me">
+            <legend id="about-title" class="panel-label">About me</legend>
+            <div class="about-container">
+                    <div class="about-services">
+                        <div class="service">
+                            <i class="fas fa-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <div class="service">
+                            <i class="fas fa-server" aria-hidden="true"></i>
+                            <span>Backend Development</span>
+                        </div>
+                        <div class="service">
+                            <i class="fas fa-gears" aria-hidden="true"></i>
+                            <span>CI/CD &amp; Deployment</span>
+                        </div>
+                    </div>
+                <div id="about-text">
+                    <p>
+                        I’m studying software development at Folkuniversitetet in Gothenburg.
+                        I enjoy building applications, figuring out how things work and developing my skills through practical projects.
+                        I’m looking for a LIA internship in spring 2027.
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+            <aside class="hero-aside" id="contact-terminal" aria-labelledby="terminal-title">
+                <fieldset class="terminal-card">
+                    <legend id="terminal-title" class="panel-label">Terminal</legend>
                     <div class="term-bar">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
                         <span class="dot dot-green"></span>
-                        <span class="term-title">Terminal</span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-red"></span>
                     </div>
 <pre class="term-pre"><code id="term-code">
 [coffee@case]~$ sudo dnf install -y coffee
@@ -58,65 +107,16 @@ Complete!
 [coffee@case]~$ coffee --version
 Coffee 1.0.0 ☕
 </code></pre>
-                </div>
+                    <form class="term-input-form" autocomplete="off">
+                        <label for="term-input">[coffee@case]~$</label>
+                        <span class="term-input-shell">
+                            <input id="term-input" name="command" aria-label="Terminal command" placeholder=" " spellcheck="false" autocapitalize="off" maxlength="200" enterkeyhint="send" autocorrect="off">
+                            <span class="term-block-cursor" aria-hidden="true"></span>
+                        </span>
+                    </form>
+                    <span id="term-status" class="term-status" role="status"></span>
+                </fieldset>
             </aside>
-        </header>
-
-        <div class="buttons">
-            <button class="bright-btn">Got a project?</button>
-            <button class="dark-btn">My resume</button>
-        </div>
-        <!-- SKILLS SEKTION -->
-        <nav class="skills" id="skills">
-            <a href="#" data-skill="html">HTML</a>
-            <a href="#" data-skill="css">CSS</a>
-            <a href="#" data-skill="javascript">Javascript</a>
-            <a href="#" data-skill="nodejs">Node.js</a>
-            <a href="#" data-skill="java">Java</a>
-            <a href="#" data-skill="springboot">Spring Boot</a>
-            <a href="#" data-skill="git">Git</a>
-            <a href="#" data-skill="github">GitHub</a>
-        </nav>
-        <!-- ABOUT ME SEKTION -->
-        <section id="about-me">
-            <div class="about-container">
-                    <div class="about-services">
-                        <div class="service">
-                            <i class="fas fa-code"></i>
-                            <span>Website Development</span>
-                        </div>
-                        <div class="service">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>App Development</span>
-                        </div>
-                        <div class="service">
-                            <i class="fas fa-server"></i>
-                            <span>Website Hosting</span>
-                        </div>
-                    </div>
-                <div id="about-text">
-                    <h3>About me</h3>
-                    <p>
-                        Hello, my name is Timmy.
-                        I am a soon to be software developer with a passion for creating beautiful and functional websites and apps.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h4>2+</h4>
-                            <p>Completed Projects</p>
-                        </div>
-                        <div class="stat">
-                            <h4>100%</h4>
-                            <p>Growth mindset</p>
-                        </div>
-                        <div class="stat">
-                            <h4>&lt;1</h4>
-                            <p>Years of experience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>  
 </body>
 </html>

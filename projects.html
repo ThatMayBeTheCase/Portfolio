@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/theme.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="projects.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/theme.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="script.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 
     <title>My Projects</title>
 </head>
 <body>
     <div class="container">
 
-        <!-- NAV -->
         <nav class="navbar">
             <span id="myName">Timmy Wramborg</span>
 
@@ -22,25 +23,27 @@
                 <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
             </button>
 
-            <div id="primary-nav" class="nav-links" data-open="false">
+            <fieldset class="nav-frame">
+                <legend class="nav-legend">
+            <span id="primary-nav" class="nav-links" data-open="false">
                 <a href="index.html">Home</a>
                 <a href="index.html#about-me">About</a>
                 <a href="projects.html">Projects</a>
-                <a href="index.html" id="contact-link">Contacts</a>
-            </div>
+                <a href="index.html#contact-terminal" id="contact-link">Contacts</a>
+            </span>
+                </legend>
+            </fieldset>
         </nav>
 
-        <!-- HERO -->
         <header class="hero">
-                <h1>My Projects <span id="dot">.</span></h1>
+                <h1>My Projects<span id="dot">.</span></h1>
         </header>
 
-        <!-- PROJECTS -->
         <main class="projects">
             <section class="project">
                 <h2>Card Game</h2>
                 <p>Simple card game where the player guesses higher, lower or equal and gains points accordingly.</p>
-                <img src="./assets/higher_lower.png" alt="Card Game">
+                <img src="assets/images/higher_lower.png" alt="Card Game">
                 <div class="project-links">
                 <a href="https://github.com/ThatMayBeTheCase/Card-Game">View Repo</a>
                 <a href="https://thatmaybethecase.github.io/Card-Game">Try Demo</a>
@@ -49,7 +52,7 @@
             <section class="project">
                 <h2>Tamagotchi</h2>
                 <p>A very simple work in progress Tamagotchi game. Take care of the Tamagotchi to keep it from leaving.</p>
-                <img src="./assets/tamagotchi.png" alt="Tamagotchi Game">
+                <img src="assets/images/tamagotchi.png" alt="Tamagotchi Game">
                 <div class="project-links">
                 <a href="https://github.com/ThatMayBeTheCase/Tamagotchi">View Repo</a>
                 <a href="https://thatmaybethecase.github.io/Tamagotchi">Try Demo</a>
@@ -58,7 +61,7 @@
             <section class="project">
                 <h2>Bookmarks Lite</h2>
                 <p>A lightweight bookmark manager, easily add and remove bookmarks. Stored in local storage.</p>
-                <img src="./assets/bookmarks_lite.png" alt="Bookmarks Lite">
+                <img src="assets/images/bookmarks_lite.png" alt="Bookmarks Lite">
                 <div class="project-links">
                 <a href="https://github.com/ThatMayBeTheCase/Bookmarks-lite">View Repo</a>
                 <a href="https://thatmaybethecase.github.io/Bookmarks-lite">Try Demo</a>
