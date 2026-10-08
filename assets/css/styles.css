@@ -632,10 +632,10 @@ header p { text-indent: 0; }
 
 .navbar a:hover,
 .navbar a:focus-visible {
-    color: var(--red-color);
+    color: var(--text-color);
     background: transparent;
     border-color: transparent;
-    transform: scale(1.04);
+    transform: none;
 }
 .navbar a:focus-visible {
     outline: 1px solid var(--red-color);
@@ -729,17 +729,25 @@ header p { text-indent: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .term-block-cursor { animation: none; } }
 
-.navbar a { transition: color .15s ease, transform .15s ease; }
-@media (prefers-reduced-motion: reduce) {
-    .navbar a:hover, .navbar a:focus-visible { transform: none; transition: none; }
+.navbar a { transition: text-decoration-color .15s ease; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.navbar a:hover, .navbar a:focus-visible { text-decoration-color: var(--red-color); }
+
+.skills a { transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
+.skills a:hover, .skills a:focus-visible {
+    color: var(--red-color);
+    background: color-mix(in srgb, var(--red-color) 8%, transparent);
+    border-color: color-mix(in srgb, var(--red-color) 60%, transparent);
+    transform: none;
+}
+#skills [data-skill].is-active,
+#skills [data-skill].is-active:hover,
+#skills [data-skill].is-active:focus-visible {
+    color: var(--red-color);
+    background: color-mix(in srgb, var(--red-color) 14%, transparent);
+    border-color: var(--red-color);
+    transform: none;
 }
 
-.skills a { transition: color .15s ease, transform .15s ease; }
-#skills [data-skill].is-active:hover,
-#skills [data-skill].is-active:focus-visible { color: var(--red-color); transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) {
-    .skills a:hover, .skills a:focus-visible,
-    #skills [data-skill].is-active,
-    #skills [data-skill].is-active:hover,
-    #skills [data-skill].is-active:focus-visible { transform: none; transition: none; }
+    .navbar a, .skills a { transition: none; }
 }
