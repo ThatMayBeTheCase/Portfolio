@@ -632,9 +632,10 @@ header p { text-indent: 0; }
 
 .navbar a:hover,
 .navbar a:focus-visible {
-    color: var(--text-color);
-    background: var(--hover-bg);
+    color: var(--red-color);
+    background: transparent;
     border-color: transparent;
+    transform: scale(1.04);
 }
 .navbar a:focus-visible {
     outline: 1px solid var(--red-color);
@@ -643,18 +644,20 @@ header p { text-indent: 0; }
 
 .skills a:hover,
 .skills a:focus-visible {
-    color: var(--text-color);
-    background: var(--hover-bg);
+    color: var(--red-color);
+    background: transparent;
     border-color: transparent;
+    transform: scale(1.04);
 }
 .skills a:focus-visible {
     outline: 1px solid var(--red-color);
     outline-offset: 2px;
 }
 #skills [data-skill].is-active {
-    color: var(--accent-color);
-    background: var(--active-bg);
+    color: var(--red-color);
+    background: transparent;
     border-color: transparent;
+    transform: scale(1.04);
 }
 
 .buttons .dark-btn { text-decoration: none; font-size: 13.3333px; display: inline-flex; align-items: center; }
@@ -725,3 +728,18 @@ header p { text-indent: 0; }
     animation: blink 1s steps(1, end) infinite;
 }
 @media (prefers-reduced-motion: reduce) { .term-block-cursor { animation: none; } }
+
+.navbar a { transition: color .15s ease, transform .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+    .navbar a:hover, .navbar a:focus-visible { transform: none; transition: none; }
+}
+
+.skills a { transition: color .15s ease, transform .15s ease; }
+#skills [data-skill].is-active:hover,
+#skills [data-skill].is-active:focus-visible { color: var(--red-color); transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) {
+    .skills a:hover, .skills a:focus-visible,
+    #skills [data-skill].is-active,
+    #skills [data-skill].is-active:hover,
+    #skills [data-skill].is-active:focus-visible { transform: none; transition: none; }
+}

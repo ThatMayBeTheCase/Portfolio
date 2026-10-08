@@ -273,11 +273,17 @@ h2 {
 
 .navbar a:hover,
 .navbar a:focus-visible {
-    color: var(--text-color);
-    background: var(--hover-bg);
+    color: var(--red-color);
+    background: transparent;
     border-color: transparent;
+    transform: scale(1.04);
 }
 .navbar a:focus-visible {
     outline: 1px solid var(--red-color);
     outline-offset: 2px;
+}
+
+.navbar a { transition: color .15s ease, transform .15s ease; }
+@media (prefers-reduced-motion: reduce) {
+    .navbar a:hover, .navbar a:focus-visible { transform: none; transition: none; }
 }

@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     html: "I build structured web pages with semantic HTML.",
     css: "I create responsive layouts, styling and animations with CSS.",
     javascript: "I use JavaScript to handle user interactions and update page content dynamically.",
-    nodejs: "I have basic familiarity with Node.js and limited hands-on experience.",
+    mysql: "I have basic experience with MySQL for storing and retrieving data in backend applications.",
     java: "I have a foundation in Java through coursework and practical backend development.",
     springboot: "I use Spring Boot to build backend applications with Spring Data JPA and MySQL.",
     git: "I use Git to track changes and manage development with branches and merges.",
