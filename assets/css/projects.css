@@ -100,47 +100,35 @@ header h1 {
     margin-left: 50px;
     opacity:0;
     transform:translateX(30px);
-    animation:text-in 180ms 0ms ease-out forwards;
+    animation:text-in 700ms 0ms ease-out forwards;
 }
 #dot {
     font-family: var(--font-mono);
     color: var(--red-color);
 }
 
-.projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-h2 {
-    font-size: 2rem;
-    color: var(--text-color);
-    margin: 0;
-}
-.project p {
-    color: var(--muted-text);
-}
+.projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
 .project {
-    display: flex;
-    flex-direction: column;
-    text-align: center; 
-    min-width: 0;
-    font-family: var(--font-mono);
-    background-color: var(--panel-bg);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid var(--frame-border);
+    background: var(--panel-bg);
     color: var(--text-color);
-    padding: 16px;
-    border-radius: 0;
-    opacity:0;
-    transform:translateY(30px);
-    animation:text-in 180ms 0ms ease-out forwards;
 }
-.project img {
-    display: flex;
-    align-self: center;
-    height: 200px;
-    border-radius: 0;
-    margin-bottom: 10px;
+.project legend { margin-left: 4px; padding: 0 8px; max-width: 100%; }
+.project h2 { margin: 0; font-size: 1.1rem; font-weight: 500; color: var(--red-color); overflow-wrap: anywhere; }
+.project-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px; align-items: center; }
+.project-preview { min-width: 0; }
+.project img { display: block; width: 100%; height: auto; border: 1px solid var(--border-color); }
+@media (min-width: 769px) {
+    .project img { width: auto; max-width: 100%; max-height: 300px; margin-inline: auto; }
 }
+.project-details { min-width: 0; }
+.project p { margin: 0 0 16px; color: var(--text-color); overflow-wrap: anywhere; }
+.project .project-tech { font-size: .8rem; color: var(--muted-text); }
+.project-details > :last-child { margin-bottom: 0; }
+.project-links { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 .project-links a {
     font-family: var(--font-mono);
     color: var(--red-color);
@@ -221,11 +209,6 @@ h2 {
     .nav-links { border: 1px solid var(--border-color); transition: max-height .1s ease, opacity .1s ease, transform .1s ease; }
 }
 
-.projects { gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
-.project { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
-.project h2 { font-size: 1.5rem; overflow-wrap: anywhere; }
-.project img { max-width: 100%; height: auto; max-height: 200px; object-fit: contain; border: 1px solid var(--border-color); }
-.project-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-color); }
 .project-links a { margin: 0; padding: 6px; }
 @media (max-width: 768px) { header h1 { margin-left: 0; font-size: 2rem; } }
 
@@ -289,3 +272,33 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
     .navbar a, .skills a { transition: none; }
 }
+
+@media (max-width: 768px) {
+    .projects { gap: 20px; }
+    .project { padding: 16px; }
+    .project-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: .85rem;
+    color: var(--text-color);
+    border: 1px solid var(--frame-border);
+    background: transparent;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+.project-links .demo-link {
+    color: var(--red-color);
+    border-color: color-mix(in srgb, var(--red-color) 60%, transparent);
+}
+.project-links a:hover { color: var(--text-color); background: var(--hover-bg); border-color: var(--accent-color); }
+.project-links .demo-link:hover {
+    color: var(--red-color);
+    background: color-mix(in srgb, var(--red-color) 10%, transparent);
+    border-color: var(--red-color);
+}
+.project-links a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .project-links a { transition: none; } }

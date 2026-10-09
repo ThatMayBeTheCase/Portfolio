@@ -99,7 +99,7 @@ header h1 {
     margin-left: 50px;
     opacity:0;
     transform:translateX(30px);
-    animation:text-in 180ms 0ms ease-out forwards;
+    animation:text-in 700ms 0ms ease-out forwards;
 }
 
 header h2 {
@@ -107,7 +107,7 @@ header h2 {
     margin-left: 50px;
     opacity:0;
     transform:translateX(30px);
-    animation:text-in 180ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
+    animation:text-in 700ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 header p {
@@ -142,11 +142,10 @@ header p {
     display:inline-block;
     opacity:0;
     transform:translateY(30px);
-    animation:text-in 180ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
+    animation:text-in 700ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 @keyframes line-in { to { transform:scaleX(1); } }
-@keyframes terminal-in { to { transform:scaleY(1); } }
 @keyframes text-in { to { opacity:1; transform:translateY(0); } }
 
 .hero-grid {
@@ -158,9 +157,7 @@ header p {
     max-width: 560px;
 }
 .hero-aside {
-    transform-origin:top;
-    transform:scaleY(0);
-    animation:terminal-in 180ms cubic-bezier(.2,.8,.2,1) forwards;
+    transform: none;
 }
 
 .terminal-card{
@@ -480,7 +477,7 @@ header p {
         font-size: 1.5rem;
         opacity:0;
         transform:translatex(30px);
-        animation:text-in 180ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
+        animation:text-in 700ms 0ms cubic-bezier(.2,.8,.2,1) forwards;
     }
     .hero-grid {
         display: flex;
