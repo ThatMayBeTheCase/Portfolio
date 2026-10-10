@@ -1,119 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="assets/js/theme.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore Timmy Wramborg’s development projects, including a Java and Spring Boot To-Do app, with screenshots, source code and live demos.">
-    <link rel="stylesheet" href="assets/css/projects.css">
-    <link rel="stylesheet" href="assets/css/theme.css" media="screen">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="assets/js/script.js" defer></script>
+    <head>
+        <meta charset="UTF-8">
+        <script src="assets/js/theme.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Explore Timmy Wramborg’s development projects, including a Java and Spring Boot To-Do app, with screenshots, source code and live demos.">
+        <link rel="stylesheet" href="assets/css/common.css">
+        <link rel="stylesheet" href="assets/css/projects.css">
+        <link rel="stylesheet" href="assets/css/theme.css" media="screen">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script src="assets/js/navigation.js" defer></script>
 
-    <title>Timmy Wramborg | Projects</title>
-</head>
-<body>
-    <div class="container">
+        <title>Timmy Wramborg | Projects</title>
+    </head>
+    <body>
+        <div class="container">
 
-        <nav class="navbar">
-            <span id="myName">Timmy Wramborg</span>
+            <nav class="navbar">
+                <span id="myName">Timmy Wramborg</span>
 
-            <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
-                <span class="sr-only">Meny</span>
-                <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
-            </button>
+                <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+                    <span class="sr-only">Meny</span>
+                    <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
+                </button>
 
-            <fieldset class="nav-frame">
-                <legend class="nav-legend">
-            <span id="primary-nav" class="nav-links" data-open="false">
-                <a href="index.html">Home</a>
-                <a href="index.html#about-me">About</a>
-                <a href="projects.html">Projects</a>
-                <a href="index.html#contact-terminal" id="contact-link">Contacts</a>
-            </span>
-                </legend>
-            </fieldset>
-        </nav>
+                <fieldset class="nav-frame">
+                    <legend class="nav-legend">
+                        <span id="primary-nav" class="nav-links" data-open="false">
+                            <a href="index.html">Home</a>
+                            <a href="index.html#about-me">About</a>
+                            <a href="projects.html">Projects</a>
+                            <a href="index.html#contact-terminal" id="contact-link">Contacts</a>
+                        </span>
+                    </legend>
+                </fieldset>
+            </nav>
 
-        <header class="hero">
+            <header class="hero">
                 <h1>My Projects<span id="dot">.</span></h1>
-        </header>
+            </header>
 
-        <main class="projects">
-            <fieldset class="project">
-                <legend><h2>To-Do</h2></legend>
-                <div class="project-layout">
-                    <div class="project-preview">
-                        <img src="assets/images/To-Do_list.png" alt="To-Do task management app">
-                    </div>
-                    <div class="project-details">
-                        <p class="project-tech">Java · Spring Boot · MySQL · Docker · GitHub Actions</p>
-                        <p>Task management app for creating, completing and filtering tasks. Built with Java, Spring Boot and MySQL, with automated testing and Docker deployment through GitHub Actions.</p>
-                        <div class="project-links">
-                        <a href="https://github.com/ThatMayBeTheCase/To-Do" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
-                        <a href="https://casemint.tail3bd46a.ts.net" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+            <main class="projects">
+                <fieldset class="project">
+                    <legend><h2>To-Do</h2></legend>
+                    <div class="project-layout">
+                        <div class="project-preview">
+                            <img src="assets/images/To-Do_list.png" alt="To-Do task management app">
+                        </div>
+                        <div class="project-details">
+                            <p class="project-tech">Java · Spring Boot · MySQL · Docker · GitHub Actions</p>
+                            <p>Task management app for creating, completing and filtering tasks. Built with Java, Spring Boot and MySQL, with automated testing and Docker deployment through GitHub Actions.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/ThatMayBeTheCase/To-Do" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
+                                <a href="https://casemint.tail3bd46a.ts.net" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="project">
-                <legend><h2>Bookmarks Lite</h2></legend>
-                <div class="project-layout">
-                    <div class="project-preview">
-                        <img src="assets/images/bookmarks_lite.png" alt="Bookmarks Lite">
-                    </div>
-                    <div class="project-details">
-                        <p class="project-tech">HTML · CSS · JavaScript</p>
-                        <p>A lightweight bookmark manager, easily add and remove bookmarks. Stored in local storage.</p>
-                        <div class="project-links">
-                        <a href="https://github.com/ThatMayBeTheCase/Bookmarks-lite" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
-                        <a href="https://thatmaybethecase.github.io/Bookmarks-lite" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                </fieldset>
+                <fieldset class="project">
+                    <legend><h2>Bookmarks Lite</h2></legend>
+                    <div class="project-layout">
+                        <div class="project-preview">
+                            <img src="assets/images/bookmarks_lite.png" alt="Bookmarks Lite">
+                        </div>
+                        <div class="project-details">
+                            <p class="project-tech">HTML · CSS · JavaScript</p>
+                            <p>A lightweight bookmark manager, easily add and remove bookmarks. Stored in local storage.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/ThatMayBeTheCase/Bookmarks-lite" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
+                                <a href="https://thatmaybethecase.github.io/Bookmarks-lite" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="project">
-                <legend><h2>Card Game</h2></legend>
-                <div class="project-layout">
-                    <div class="project-preview">
-                        <img src="assets/images/higher_lower.png" alt="Card Game">
-                    </div>
-                    <div class="project-details">
-                        <p class="project-tech">HTML · CSS · JavaScript</p>
-                        <p>Simple card game where the player guesses higher, lower or equal and gains points accordingly.</p>
-                        <div class="project-links">
-                        <a href="https://github.com/ThatMayBeTheCase/Card-Game" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
-                        <a href="https://thatmaybethecase.github.io/Card-Game" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                </fieldset>
+                <fieldset class="project">
+                    <legend><h2>Card Game</h2></legend>
+                    <div class="project-layout">
+                        <div class="project-preview">
+                            <img src="assets/images/higher_lower.png" alt="Card Game">
+                        </div>
+                        <div class="project-details">
+                            <p class="project-tech">HTML · CSS · JavaScript</p>
+                            <p>Simple card game where the player guesses higher, lower or equal and gains points accordingly.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/ThatMayBeTheCase/Card-Game" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
+                                <a href="https://thatmaybethecase.github.io/Card-Game" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="project">
-                <legend><h2>Tamagotchi</h2></legend>
-                <div class="project-layout">
-                    <div class="project-preview">
-                        <img src="assets/images/tamagotchi.png" alt="Tamagotchi Game">
-                    </div>
-                    <div class="project-details">
-                        <p class="project-tech">HTML · CSS · JavaScript</p>
-                        <p>A very simple work in progress Tamagotchi game. Take care of the Tamagotchi to keep it from leaving.</p>
-                        <div class="project-links">
-                        <a href="https://github.com/ThatMayBeTheCase/Tamagotchi" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
-                        <a href="https://thatmaybethecase.github.io/Tamagotchi" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                </fieldset>
+                <fieldset class="project">
+                    <legend><h2>Tamagotchi</h2></legend>
+                    <div class="project-layout">
+                        <div class="project-preview">
+                            <img src="assets/images/tamagotchi.png" alt="Tamagotchi Game">
+                        </div>
+                        <div class="project-details">
+                            <p class="project-tech">HTML · CSS · JavaScript</p>
+                            <p>A very simple work in progress Tamagotchi game. Take care of the Tamagotchi to keep it from leaving.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/ThatMayBeTheCase/Tamagotchi" class="source-link"><i class="fa-brands fa-github" aria-hidden="true"></i> Source code</a>
+                                <a href="https://thatmaybethecase.github.io/Tamagotchi" class="demo-link"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="project">
-                <legend><h2>Project 4</h2></legend>
-                <div class="project-details">
+                </fieldset>
+                <fieldset class="project">
+                    <legend><h2>Project 4</h2></legend>
+                    <div class="project-details">
                         <p>Work in progress..</p>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat rerum ratione dolores magni voluptatibus delectus natus laudantium maiores eligendi. Accusamus aperiam provident, sapiente omnis impedit quas. Necessitatibus eligendi assumenda adipisci!</p>
-                </div>
-            </fieldset>
-        </main>
+                    </div>
+                </fieldset>
+            </main>
 
-    </div>
-</body>
+        </div>
+    </body>
 </html>
