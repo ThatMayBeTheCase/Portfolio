@@ -8,23 +8,14 @@
     --accent-color: #c4b28a;
     --on-accent: #1F1F28;
     --secondary-color: #8ea49e;
-    --tertiary-color: #938AA9;
     --red-color: #c4746e;
     --on-red: #1F1F28;
-    --red-hover: #cc928e;
     --accent-hover: #d4c196;
     --terminal-text: #DCD7BA;
     --terminal-bg: #1F1F28;
-    --green-color: #699469;
-    --yellow-color: #c4b28a;
     --border-color: color-mix(in srgb, #c4b28a 18%, transparent);
     --frame-border: color-mix(in srgb, #c4b28a 40%, transparent);
-    --border-active: color-mix(in srgb, #c4b28a 60%, transparent);
-    --selection-color: color-mix(in srgb, #c4b28a 16%, transparent);
-    --soft-hover: color-mix(in srgb, #c4b28a 10%, transparent);
-    --bar-bg: color-mix(in srgb, #c4b28a 4%, transparent);
     --hover-bg: oklch(54% 0 0 / .1);
-    --active-bg: oklch(54% 0 0 / .2);
 }
 
 :root[data-theme="light"] {
@@ -37,28 +28,19 @@
     --accent-color: #6b7f9f;
     --on-accent: #ffffff;
     --secondary-color: #6f8795;
-    --tertiary-color: #8b6e86;
     --red-color: #c27672;
     --on-red: #ffffff;
-    --red-hover: #c68582;
     --accent-hover: #6b7f9f;
     --terminal-text: #5d6267;
     --terminal-bg: #f2f1ec;
-    --green-color: #7b958e;
-    --yellow-color: #a7956a;
     --border-color: color-mix(in srgb, #6b7f9f 18%, transparent);
     --frame-border: color-mix(in srgb, #6b7f9f 40%, transparent);
-    --border-active: color-mix(in srgb, #6b7f9f 60%, transparent);
-    --selection-color: color-mix(in srgb, #6b7f9f 16%, transparent);
-    --soft-hover: color-mix(in srgb, #6b7f9f 10%, transparent);
-    --bar-bg: color-mix(in srgb, #6b7f9f 4%, transparent);
     --hover-bg: oklch(54% 0 0 / .1);
-    --active-bg: oklch(54% 0 0 / .2);
 }
 
 /* Screen aliases leave the CV print palette independent of the chosen theme. */
 @media screen {
-    :root { --bg: var(--bg-color); --surface: var(--panel-bg); --text: var(--text-color); --muted: var(--muted-text); --accent: var(--accent-color); --red: var(--red-color); --border: var(--frame-border); }
+    :root { --bg: var(--bg-color); --text: var(--text-color); --muted: var(--muted-text); --accent: var(--accent-color); --red: var(--red-color); --border: var(--frame-border); }
     body { background-color: var(--page-bg); }
     .terminal-card { background: var(--terminal-bg); color: var(--terminal-text); }
     .term-input-form label, .term-input-form input { color: var(--terminal-text); }

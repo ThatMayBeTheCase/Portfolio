@@ -183,3 +183,14 @@ body {
         transition: none;
     }
 }
+
+header {
+    font-family: var(--font-mono);
+    text-align: left;
+    color: var(--text-color);
+}
+
+#dot {
+    font-family: var(--font-mono);
+    color: var(--red-color);
+}

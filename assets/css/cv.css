@@ -1,6 +1,5 @@
 :root {
     --bg: #1f1f28;
-    --surface: #2a2a37;
     --text: #dcd7ba;
     --muted: #c8c093;
     --accent: #c4b28a;
@@ -27,11 +26,11 @@ a {
     overflow-wrap: anywhere;
 }
 
-a: hover {
+a:hover {
     color: var(--red);
 }
 
-a: focus-visible, button:focus-visible {
+a:focus-visible, button:focus-visible {
     outline: 2px solid var(--red);
     outline-offset: 3px;
 }
@@ -55,7 +54,7 @@ button {
     color: var(--text);
 }
 
-button: hover {
+button:hover {
     background: rgba(128, 128, 128, .1);
 }
 
