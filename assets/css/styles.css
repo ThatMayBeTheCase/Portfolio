@@ -1,5 +1,5 @@
 :root {
-    --aside-w: clamp(380px, 44vw, 580px);
+    --aside-w: clamp(380px, 44vw, 510px);
 }
 
 header {
