@@ -1,0 +1,361 @@
+:root[data-theme="classic"] {
+    --font-classic: "Poppins", sans-serif;
+    --font-terminal: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root[data-theme="classic"] body {
+    background-image: radial-gradient(#273d50, #0d161d);
+}
+
+:root[data-theme="classic"] :is(body, #myName, .navbar a, header, #dot, .bright-btn, .dark-btn, .skills a, #about-me, .panel-label, .project-links a) {
+    font-family: var(--font-classic);
+}
+
+:root[data-theme="classic"] .container {
+    border: 0;
+    border-radius: 10px;
+}
+
+:root[data-theme="classic"] .navbar {
+    padding: 10px;
+    background: #121e28ee;
+}
+
+:root[data-theme="classic"] #myName {
+    padding-left: 0;
+}
+
+:root[data-theme="classic"] .nav-frame {
+    margin: 0;
+    border: 0;
+}
+
+:root[data-theme="classic"] .nav-legend {
+    margin: 0;
+    padding: 0;
+}
+
+:root[data-theme="classic"] .navbar a {
+    color: #ced0d4;
+    font-size: 1rem;
+    padding: 6px;
+    border: 0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform .2s ease-in-out, color .2s ease-in-out;
+}
+
+:root[data-theme="classic"] .navbar a:is(:hover, :focus-visible) {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+:root[data-theme="classic"] .nav-links a + a::before {
+    content: none;
+}
+
+:root[data-theme="classic"] header h1 {
+    color: #f5f5f5;
+}
+
+:root[data-theme="classic"] #dot,
+:root[data-theme="classic"] .cv h1 span {
+    margin-inline-start: .25em;
+}
+
+:root[data-theme="classic"] header h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+}
+
+:root[data-theme="classic"] .tagline::before {
+    height: 2px;
+    width: 6ch;
+}
+
+:root[data-theme="classic"] .terminal-card {
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+:root[data-theme="classic"] .terminal-card > legend,
+:root[data-theme="classic"] .skills-panel > legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+:root[data-theme="classic"] .term-bar::before {
+    content: "Terminal";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-classic);
+    font-size: .85rem;
+    color: var(--muted-text);
+}
+
+:root[data-theme="classic"] .term-bar {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(0, 0, 0, .06));
+    border-bottom: 0;
+    justify-content: flex-start;
+}
+
+:root[data-theme="classic"] :is(.term-pre, .term-input-form, .terminal-card .panel-label) {
+    font-family: var(--font-terminal);
+}
+
+:root[data-theme="classic"] .dot {
+    border-radius: 50%;
+}
+
+:root[data-theme="classic"] .dot-red {
+    order: 0;
+}
+
+:root[data-theme="classic"] .dot-yellow {
+    order: 1;
+    background: #ffbd2e;
+}
+
+:root[data-theme="classic"] .dot-green {
+    order: 2;
+    background: #27c93f;
+}
+
+:root[data-theme="classic"] .term-block-cursor {
+    background: var(--terminal-text);
+    opacity: .7;
+}
+
+:root[data-theme="classic"] :is(.bright-btn, .buttons .dark-btn) {
+    color: #ced0d4;
+    border: 2px solid var(--accent-color);
+    border-radius: 3px;
+    transition: background-color .2s ease-in-out;
+}
+
+:root[data-theme="classic"] .bright-btn:hover {
+    background-color: var(--bg-color);
+}
+
+:root[data-theme="classic"] .dark-btn:hover {
+    background-color: var(--accent-color);
+}
+
+:root[data-theme="classic"] :is(.skills-panel, #about-me, .project) {
+    border: 0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Borderless legends act as headings while retaining the fieldset semantics. */
+:root[data-theme="classic"] :is(#about-me, .project) > legend {
+    float: left;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 16px;
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+:root[data-theme="classic"] :is(#about-me, .project) > legend + * {
+    clear: both;
+}
+
+:root[data-theme="classic"] #about-me {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: 40px;
+    grid-template-rows: max-content minmax(0, 1fr);
+    align-items: start;
+}
+
+:root[data-theme="classic"] #about-title {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+:root[data-theme="classic"] .about-container {
+    display: contents;
+}
+
+:root[data-theme="classic"] .about-services {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+}
+
+:root[data-theme="classic"] #about-text {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+:root[data-theme="classic"] .skills {
+    gap: 12px;
+}
+
+:root[data-theme="classic"] .skills a {
+    font-family: var(--font-classic);
+    font-size: 1.1rem;
+    font-weight: 400;
+    position: relative;
+    border-color: transparent;
+    border-radius: 0;
+    color: var(--muted-text);
+    transition: transform .2s ease-in-out, color .2s ease-in-out;
+}
+
+:root[data-theme="classic"] .skills a:is(:hover, :focus-visible),
+:root[data-theme="classic"] #skills [data-skill].is-active {
+    color: var(--accent-color);
+    background: transparent;
+    border-color: transparent;
+    transform: scale(1.05);
+}
+
+:root[data-theme="classic"] .skills a:hover {
+    transform: scale(1.1);
+}
+
+:root[data-theme="classic"] .skills a:hover::before,
+:root[data-theme="classic"] .skills a:hover::after {
+    position: absolute;
+    font-family: inherit;
+    color: var(--accent-color);
+}
+
+:root[data-theme="classic"] .skills a:hover::before {
+    content: "<";
+    left: -.5ch;
+}
+
+:root[data-theme="classic"] .skills a:hover::after {
+    content: "/>";
+    right: -1.5ch;
+}
+
+:root[data-theme="classic"] .project h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+:root[data-theme="classic"] .project img {
+    border-radius: 8px;
+}
+
+:root[data-theme="classic"] .project-links {
+    border-top: 0;
+}
+
+:root[data-theme="classic"] .project-links a {
+    border: 2px solid var(--accent-color);
+    border-radius: 3px;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+:root[data-theme="classic"] .project-links .demo-link {
+    background: var(--accent-color);
+    color: #ced0d4;
+}
+
+:root[data-theme="classic"] .project-links a:hover {
+    background: var(--accent-color);
+    color: #ced0d4;
+}
+
+:root[data-theme="classic"] .project-links .demo-link:hover {
+    background: transparent;
+    color: var(--accent-color);
+}
+
+:root[data-theme="classic"] .cv {
+    border: 0;
+    border-radius: 10px;
+}
+
+:root[data-theme="classic"] .cv section {
+    border: 0;
+    border-radius: 10px;
+    background: var(--panel-bg);
+    padding: 16px;
+}
+
+:root[data-theme="classic"] .cv h2 {
+    position: static;
+    transform: none;
+    background: transparent;
+    padding: 0;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+:root[data-theme="classic"] .toolbar button {
+    border-radius: 3px;
+}
+
+@media (min-width: 769px) {
+    :root[data-theme="classic"] .tagline {
+        margin-left: -1.25rem;
+    }
+
+    :root[data-theme="classic"] .nav-frame {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    :root[data-theme="classic"] #about-me {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    :root[data-theme="classic"] :is(#about-title, #about-text) {
+        grid-column: 1;
+    }
+
+    :root[data-theme="classic"] .nav-links {
+        border: 0;
+        border-radius: 10px;
+        background: #121e28ee;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .3);
+    }
+
+    :root[data-theme="classic"] .navbar a {
+        padding: 10px 12px;
+    }
+
+    :root[data-theme="classic"] .navbar a:is(:hover, :focus-visible) {
+        transform: none;
+        background: rgba(255, 255, 255, .04);
+        color: #ff9383;
+    }
+
+    :root[data-theme="classic"] header h2 {
+        font-size: 1.5rem;
+    }
+
+    :root[data-theme="classic"] .tagline::before {
+        width: 5ch;
+    }
+
+    :root[data-theme="classic"] :is(.skills-panel, #about-me, .project) {
+        padding: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root[data-theme="classic"] :is(.navbar a, .skills a, .project-links a, .bright-btn, .dark-btn) {
+        transition: none;
+    }
+}

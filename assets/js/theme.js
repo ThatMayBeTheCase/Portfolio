@@ -1,6 +1,7 @@
 (() => {
   const key = "portfolio-theme";
-  const valid = mode => mode === "light" || mode === "dark";
+  const modes = Object.freeze(["dark", "light", "classic"]);
+  const valid = mode => modes.includes(mode);
   // URL state carries the theme between file:// pages with separate storage.
   const requested = new URL(window.location.href).searchParams.get("theme");
   let saved;
@@ -29,6 +30,7 @@
     });
   }
   window.portfolioTheme = {
+    modes,
     set(mode) {
       if (!valid(mode)) return;
       document.documentElement.dataset.theme = mode;

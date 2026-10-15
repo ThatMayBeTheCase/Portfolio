@@ -94,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
         lines = [
           "Available commands:",
           "about          Show my introduction",
-          "skills <name>  Explore a skill (e.g. skills java)",
+          "skills <name>  Explore a skill",
           "projects       Open my projects",
           "contact        Show contact details",
           "resume         Open my CV",
           "clear          Clear the terminal",
           "coffee         Brew a virtual coffee ☕",
           "date           Show local date and time",
-          "theme [mode]   Toggle theme, light/dark",
+          "theme [mode]   Toggle theme, light/dark/classic",
         ];
         break;
       case "about":
@@ -159,15 +159,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
         break;
       case "theme": {
+        const themes = window.portfolioTheme.modes;
+        const current = window.portfolioTheme.get();
         const mode =
-          args[0] ||
-          (window.portfolioTheme.get() === "dark" ? "light" : "dark");
-        if (!["light", "dark"].includes(mode) || args.length > 1) {
-          lines = ["Usage: theme [light|dark]"];
+          args[0] || themes[(themes.indexOf(current) + 1) % themes.length];
+        if (!themes.includes(mode) || args.length > 1) {
+          lines = ["Usage: theme [dark|light|classic]"];
         } else {
           window.portfolioTheme.set(mode);
           lines = [
-            mode === "light" ? "Light mode enabled." : "Dark mode enabled.",
+            `${mode[0].toUpperCase() + mode.slice(1)} mode enabled.`,
           ];
         }
         break;

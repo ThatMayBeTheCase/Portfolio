@@ -38,6 +38,26 @@
     --hover-bg: oklch(54% 0 0 / .1);
 }
 
+:root[data-theme="classic"] {
+    color-scheme: dark;
+    --bg-color: #121e28;
+    --page-bg: #0d161d;
+    --panel-bg: #17232d;
+    --text-color: #c9d1d9;
+    --muted-text: #8b949e;
+    --accent-color: #ff705a;
+    --on-accent: #121e28;
+    --secondary-color: #8ea49e;
+    --red-color: #ff705a;
+    --on-red: #121e28;
+    --accent-hover: #ff9585;
+    --terminal-text: #c9d1d9;
+    --terminal-bg: #17232d;
+    --border-color: rgba(255, 255, 255, .08);
+    --frame-border: rgba(255, 255, 255, .18);
+    --hover-bg: rgba(255, 112, 90, .1);
+}
+
 /* Screen aliases leave the CV print palette independent of the chosen theme. */
 @media screen {
     :root { --bg: var(--bg-color); --text: var(--text-color); --muted: var(--muted-text); --accent: var(--accent-color); --red: var(--red-color); --border: var(--frame-border); }
