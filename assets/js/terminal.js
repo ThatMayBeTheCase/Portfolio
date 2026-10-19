@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "contact        Show contact details",
           "resume         Open my CV",
           "clear          Clear the terminal",
-          "coffee         Brew a virtual coffee ☕",
+          "coffee         Brew a virtual coffee",
           "date           Show local date and time",
           "theme [mode]   Toggle theme, light/dark/classic",
         ];
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "  .------.",
           "  |      |]",
           "  \u0027------\u0027",
-          "Coffee ready! ☕ Enjoy.",
+          "Coffee ready! Enjoy.",
         ];
         break;
       default:
